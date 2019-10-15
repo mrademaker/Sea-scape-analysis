@@ -6,4 +6,4 @@ contains the spatial data used to derive the seascapes.
 
  <br>
  
-![](images/temp_cor.png)
+![](https://github.com/mrademaker/Sea-scape-analysis/blob/master/images/temp_cor.png)
