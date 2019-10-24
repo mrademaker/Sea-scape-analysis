@@ -1683,7 +1683,7 @@ for (i in 1:nrow(species_info)){
 list_AIC_beta_2= vector("list",16)
 
 
-for (j in 12:16){
+for (j in 1:16){
   data=read.csv(paste(path,sprintf("Data/Filtered_%s.csv",species_info$file_name[j]),sep=""))
   names(data)[names(data) == "id"] <- "Seascapenr"
   print(species_info$file_name[j])
@@ -1941,38 +1941,38 @@ for (j in 12:16){
   # ################################################################
   # # Plot predicted smooths at smooth scale and simultaneous CI   #----
   # ################################################################
-  newd <- expand.grid(Year = seq(1977, 2019, length = 126), Seascapenr = c(1,2,3,4,5,6,7,8,9,10))
-  pred <- predict(mod, newd, se.fit = TRUE)
-  se.fit <- pred$se.fit
-  pred <- transform(cbind(data.frame(pred), newd),
-                    uprP = fit + (2 * se.fit),
-                    lwrP = fit - (2 * se.fit))
-  ###
-  Vb <- vcov(mod)
-  newd <- expand.grid(Year = seq(1977, 2019, length = 126), Seascapenr = c(1,2,3,4,5,6,7,8,9,10))
-  pred <- predict(mod, newd, se.fit = TRUE)
-  se.fit <- pred$se.fit
-
-  set.seed(42)
-  N <- 10000
-
-  BUdiff <- rmvn(N, mu = rep(0, nrow(Vb)), sig = Vb)
-
-  #xp matrix where basisfunctions of the model have been evaluated at 400 time point values per area
-  Cg <- predict(mod, newd, type = "lpmatrix")
-  simDev <- Cg %*% t(BUdiff)
-
-  absDev <- abs(sweep(simDev, 1, se.fit, FUN = "/"))
-  masd <- apply(absDev, 2L, max)
-  crit <- quantile(masd, prob = 0.95, type = 8)
-  pred <- transform(cbind(data.frame(pred), newd),
-                    uprP = fit + (2 * se.fit),
-                    lwrP = fit - (2 * se.fit),
-                    uprS = fit + (crit * se.fit),
-                    lwrS = fit - (crit * se.fit),
-                    ci_width = (fit+(crit*se.fit))-(fit-(crit*se.fit)))
-  write.csv(pred,file = paste(path,sprintf("Seascapes/Q1/%s/GAM/fitted_trends_ci.csv",species_info$file_name[j]),sep=""))
-  
+  # newd <- expand.grid(Year = seq(1977, 2019, length = 126), Seascapenr = c(1,2,3,4,5,6,7,8,9,10))
+  # pred <- predict(mod, newd, se.fit = TRUE)
+  # se.fit <- pred$se.fit
+  # pred <- transform(cbind(data.frame(pred), newd),
+  #                   uprP = fit + (2 * se.fit),
+  #                   lwrP = fit - (2 * se.fit))
+  # ###
+  # Vb <- vcov(mod)
+  # newd <- expand.grid(Year = seq(1977, 2019, length = 126), Seascapenr = c(1,2,3,4,5,6,7,8,9,10))
+  # pred <- predict(mod, newd, se.fit = TRUE)
+  # se.fit <- pred$se.fit
+  # 
+  # set.seed(42)
+  # N <- 10000
+  # 
+  # BUdiff <- rmvn(N, mu = rep(0, nrow(Vb)), sig = Vb)
+  # 
+  # #xp matrix where basisfunctions of the model have been evaluated at 400 time point values per area
+  # Cg <- predict(mod, newd, type = "lpmatrix")
+  # simDev <- Cg %*% t(BUdiff)
+  # 
+  # absDev <- abs(sweep(simDev, 1, se.fit, FUN = "/"))
+  # masd <- apply(absDev, 2L, max)
+  # crit <- quantile(masd, prob = 0.95, type = 8)
+  # pred <- transform(cbind(data.frame(pred), newd),
+  #                   uprP = fit + (2 * se.fit),
+  #                   lwrP = fit - (2 * se.fit),
+  #                   uprS = fit + (crit * se.fit),
+  #                   lwrS = fit - (crit * se.fit),
+  #                   ci_width = (fit+(crit*se.fit))-(fit-(crit*se.fit)))
+  # #write.csv(pred,file = paste(path,sprintf("Seascapes/Q1/%s/GAM/fitted_trends_ci.csv",species_info$file_name[j]),sep=""))
+  # 
   
   # #separate plots per area
   # S1=pred[which(pred$Seascapenr==1),]
@@ -2085,6 +2085,7 @@ for (j in 12:16){
   # # #####################################################
   combi=c(1,2,3,4,5,6,7,8,9,10)
   combi_width=as.data.frame(combinations(n=10,r=2,v=combi))
+  
   pdat=expand.grid(Year=seq(1977,2019, length=126),Seascapenr = c(1,2,3,4,5,6,7,8,9,10))
   xp <- predict(mod, pdat, type = 'lpmatrix')
 
@@ -2157,23 +2158,23 @@ for (j in 12:16){
     diff_df$ci_width[i]=ci_width  
         
      
-    # DifS12plot=
-    #   ggplot(S12pred, aes(x = Year, y = V1)) +
-    #   theme_bw()+
-    #   #geom_ribbon(aes(ymin = lwrP, ymax = uprP), alpha = 0.2) +
-    #   geom_ribbon(aes(ymin = lwrS, ymax = uprS), alpha = 0.2) +
-    #   geom_line(data=S12pred,aes(x=Year,y=V1),col="black",size=0.5) +
-    #   geom_line(data=S12higher,aes(x=Year,y=V1),col="seagreen1",size=1)+
-    #   geom_line(data=S12lower,aes(x=Year,y=V1),col="red",size=1)+
-    #   ggtitle(sprintf("%s Seascape %s - %s",species_info$Scientific.name[j],combi_width$V1[i],combi_width$V2[i]))+
-    #   labs(x = "Year", y = 'Difference Fish biomass trend')+
-    #   theme(plot.title = element_text(hjust = 0.25,size=12,face="bold"))+
-    #   theme(axis.text.x = element_text(face="bold",size=9))+
-    #   theme(axis.text.y = element_text(face="bold",size=9))+
-    #   theme(axis.title.x = element_text(face="bold",size=10,margin = margin(t = 10, r = 0, b = 0, l = 0)))+
-    #   theme(axis.title.y = element_text(face="bold",size=10,margin = margin(t = 0, r = 10, b = 0, l = 0)))+
-    #   theme(axis.line = element_line(size=1))
-  #   ggsave(DifS12plot,file = paste(path,sprintf("Seascapes/Q1/%s/GAM/Diff_smooth/Diff_smooth_%s_%s_ANSC.png",species_info$file_name[j],combi_width$V1[i],combi_width$V2[i]),sep=""), height=3.5, width=4.5,dpi = 600)
+    DifS12plot=
+      ggplot(S12pred, aes(x = Year, y = V1)) +
+      theme_bw()+
+      #geom_ribbon(aes(ymin = lwrP, ymax = uprP), alpha = 0.2) +
+      geom_ribbon(aes(ymin = lwrS, ymax = uprS), alpha = 0.2) +
+      geom_line(data=S12pred,aes(x=Year,y=V1),col="black",size=0.5) +
+      geom_line(data=S12higher,aes(x=Year,y=V1),col="seagreen1",size=1)+
+      geom_line(data=S12lower,aes(x=Year,y=V1),col="red",size=1)+
+      ggtitle(sprintf("%s Seascape %s - %s",species_info$Scientific.name[j],combi_width$V1[i],combi_width$V2[i]))+
+      labs(x = "Year", y = 'Difference Fish biomass trend')+
+      theme(plot.title = element_text(hjust = 0.25,size=12,face="bold"))+
+      theme(axis.text.x = element_text(face="bold",size=9))+
+      theme(axis.text.y = element_text(face="bold",size=9))+
+      theme(axis.title.x = element_text(face="bold",size=10,margin = margin(t = 10, r = 0, b = 0, l = 0)))+
+      theme(axis.title.y = element_text(face="bold",size=10,margin = margin(t = 0, r = 10, b = 0, l = 0)))+
+      theme(axis.line = element_line(size=1))
+      ggsave(DifS12plot,file = paste(path,sprintf("Seascapes/Q1/%s/GAM/Diff_smooth/Diff_smooth_%s_%s.png",species_info$file_name[j],combi_width$V1[i],combi_width$V2[i]),sep=""), height=3.5, width=4.5,dpi = 600)
   #DifS12plot
   # 
   }
@@ -2194,7 +2195,9 @@ for (j in 1:16){
                   gl[[13]],gl[[14]],gl[[15]],gl[[16]],gl[[17]],gl[[18]],
                   gl[[19]],gl[[20]],gl[[21]],gl[[22]],gl[[23]],gl[[24]],
                   gl[[25]],gl[[26]],gl[[27]],gl[[28]],gl[[29]],gl[[30]],
-                  gl[[31]],gl[[32]],gl[[33]],gl[[34]],gl[[35]],gl[[36]],ncol=6,nrow=6)
+                  gl[[31]],gl[[32]],gl[[33]],gl[[34]],gl[[35]],gl[[36]],
+                  gl[[37]],gl[[38]],gl[[39]],gl[[40]],gl[[41]],gl[[42]],
+                  gl[[43]],gl[[44]],gl[[45]],ncol=6,nrow=6)
   ggsave(cp,file=paste(path,sprintf("graphs/Seascapes/Q1/%s/GAM/Diff_smooth/Diff_smooths_ANSC.png",species_info$file_name[j]),sep=""),height=21, width=27,dpi = 300)
 }
 
@@ -2326,6 +2329,7 @@ for (j in 1:16){
   #100 simulations from model posterior distribution
   sim_dat=as.data.frame(smooth_samples(mod,n=100,new_data=newdat,n_vals=43))
   sim_dat2=data.matrix(smooth_samples(mod,n=100,new_data=newdat,n_vals=43))
+  
   Year=floor(as.numeric(sim_dat2[,".x1"]))
   sim_dat2=cbind(sim_dat2,Year)
   #plot(x=sim_dat$Year,y=sim_dat$value)
@@ -2334,6 +2338,7 @@ for (j in 1:16){
   #go iteratively through smooth pair combinations and simulate autocorrelation
   sim_autocor=matrix(ncol=4,nrow=0)
   draw_v1[,8]
+  
   autocor=apply(combi_width,MARGIN = 1,
           FUN=function(x){
           V1=x[1]#access element first column
@@ -2353,7 +2358,7 @@ for (j in 1:16){
             
             sim=as.numeric(y[1]) 
             
-             dat=L_AXHA(draw_v1[,8],draw_v2[,8],lags=c(0,1,2,3,4,5,6,7,8,9,10),L=5) #temporal correlation
+             dat=q_L_AXHA(draw_v1[,8],draw_v2[,8],lags=c(0,1,2,3,4,5,6,7,8,9,10),L=1,q=2) #temporal correlation
              dat=cbind(dat,c(0,1,2,3,4,5,6,7,8,9,10)) # lags
              dat=cbind(dat,c(sim,sim,sim,sim,sim,sim,sim,sim,sim,sim,sim)) # draw
              dat=cbind(dat,c(c_var,c_var,c_var,c_var,c_var,c_var,c_var,c_var,c_var,c_var,c_var)) #seascapes
@@ -2371,96 +2376,101 @@ for (j in 1:16){
   df$lag_dup=NULL
   write.csv(df,paste(path,sprintf("Seascapes/Q1/%s/GAM/CCF/autocor_lag.csv",species_info$file_name[j]),sep=""))
 }
-#     combi_sim=function(x){
-#     V1=x[,1]
-#     V2=x[,2]
-#     ci=c(V1,V2)
-#     return(ci)
-#     
-#   }
-#   ci
-#   for (item in 1:nrow(combi_width)){ 
-#     print(item)
-#     V1=sprintf("s(Year):Seascapenr%s",combi_width$V1[item])
-#     V2=sprintf("s(Year):Seascapenr%s",combi_width$V2[item])
-#     
-#     sim_dat_V1=subset(sim_dat,term==V1)
-#     sim_dat_V2=subset(sim_dat,term==V2)
-#     c_var=paste(combi_width$V1[item],"&",combi_width$V2[item],sep=" ")
-# 
-#     
-#     for (sim in 1:100){
-#         #print(sim)
-#         draw_V1=subset(sim_dat_V1,draw==sim)
-#         draw_V2=subset(sim_dat_V2,draw==sim)
-#         
-#         #Call temporal autocorrelation function
-#         dat=lagged_DCCA_CC(x=draw_V1$value,y=draw_V2$value,lags=c(0,1,2,3,4,5,6,7,8,9,10),k=5)
-#         dat=cbind(dat,c(0,1,2,3,4,5,6,7,8,9,10))
-#         dat=cbind(dat,c(sim,sim,sim,sim,sim,sim,sim,sim,sim,sim,sim))
-#         dat=cbind(dat,c(c_var,c_var,c_var,c_var,c_var,c_var,c_var,c_var,c_var,c_var,c_var))
-#         sim_autocor=rbind(sim_autocor,dat)
-#         #dat$Seascapes=Seascapes
-#         #sim_autocor=rbind(sim_autocor,dat)
-#       } 
-#   }
-#   sim_autocor=as.data.frame(sim_autocor)
-#   #write autocor file to csv
-#   write.csv(sim_autocor,paste(path,sprintf("Seascapes/Q1/%s/GAM/CCF/autocor_lag.csv",species_info$file_name[j]),sep=""))
-# }
 
 
 #######################################
 ### Create autocor graphs from file ###----
 #######################################
+library(tidyverse)
+library(RColorBrewer)
+library(colorRamps)
+library(stringr)
 
 #seascape combinations to recall
 combi=c(1,2,3,4,5,6,7,8,9,10)
 combi_width=as.data.frame(combinations(n=10,r=2,v=combi))
 
+
 for (j in 1:16){
-  data=read.csv(paste(path,sprintf("Seascapes/Q1/%s/GAM/CCF/autocor_lag.csv",species_info$file_name[j]),sep=""))
-  names(data)[1:5]=c("ID","cor","lag","sim","Seascapes")
-  print(species_info$file_name[j])
-  for (i in 1:nrow(combi_width)){
-    sc_combi=sprintf("%s & %s",combi_width$V1[i],combi_width$V2[i])
+   data=read.csv(paste(path,sprintf("Seascapes/Q1/%s/GAM/CCF/autocor_lag.csv",species_info$file_name[j]),sep=""))
+   names(data)[1:5]=c("ID","Accf","lag","sim","Seascapes")
+   print(species_info$file_name[j])
+    #cols=rev("RdYlBu")
+    #cols <- brewer.pal(11, 'Spectral')
+    #cols
+    combi_data=aggregate(Accf~lag+Seascapes,data=data,FUN=mean)
+    #add_cols=str_split_fixed(combi_data$Seascapes," & ",2)
+    #combi_data$S1=as.numeric(add_cols[,1])
+    #combi_data$S2=as.numeric(add_cols[,2])
+    #combi_data$Seascapes2=as.numeric(gsub(" & ","",combi_data$Seascapes))
+    combi_data$Seascapes=gsub("&","-",combi_data$Seascapes)
+    combi_data$Seascapes=factor(combi_data$Seascapes, levels = c("1 - 2", "1 - 3", "1 - 4", "1 - 5", "1 - 6", "1 - 7", "1 - 8", "1 - 9", "1 - 10",
+                                                                 "2 - 3", "2 - 4", "2 - 5", "2 - 6", "2 - 7", "2 - 8", "2 - 9", "2 - 10", "3 - 4",
+                                                                 "3 - 5", "3 - 6", "3 - 7", "3 - 8", "3 - 9", "3 - 10", "4 - 5", "4 - 6", "4 - 7",
+                                                                 "4 - 8", "4 - 9", "4 - 10", "5 - 6","5 - 7", "5 - 8", "5 - 9", "5 - 10", "6 - 7",
+                                                                 "6 - 8", "6 - 9", "6 - 10", "7 - 8", "7 - 9", "7 - 10", "8 - 9", "8 - 10", "9 - 10"))
   
-    #subset data
-    combi_data=subset(data, Seascapes==sc_combi)
-    combi_data=select(combi_data,-ID,sim)#drop unneccesary columns
+    p=ggplot(data = combi_data, aes(x=Seascapes, y=lag, fill = Accf))+
+      geom_tile(color = "white")+
+      scale_fill_gradientn(colors=rainbow(11),limits=c(-1,1)) + #rainbow(21)
+      theme_minimal()+
+      theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1,size=9))+
+      theme(axis.text.y = element_text(angle = 45, vjust = 1, hjust = 1,size=9))+
+      scale_y_continuous(breaks = round(seq(min(combi_data2$lag), max(combi_data2$lag), by = 1),1))
+    p
     
-    # aggregate autocorrelation per lag (mean per lag) for subset
-    combi_data2=do.call(data.frame, aggregate(.~lag+Seascapes,data=combi_data,function(x)c(mean=mean(x),se=std_err(x))))
-    combi_data2$upr_conf=combi_data2$cor.mean+(2*combi_data2$cor.se)
-    combi_data2$lwr_conf=combi_data2$cor.mean-(2*combi_data2$cor.se)
-    
-    #create graph
-    autocor_plot=ggplot(combi_data2, aes(x = lag, y = cor.mean))+
-                 theme_classic()+
-                 geom_bar(stat="identity",col="black",fill="gray",alpha=0.5,width=0.5)+#col="black",fill="gray",width=0.5)+
-                 geom_errorbar(aes(ymin=lwr_conf,ymax=upr_conf),width=0.2)+
-
-                 geom_hline(yintercept=0.3, linetype="dashed", color = "red",size=1,alpha=0.5)+
-                 geom_hline(yintercept=-0.3, linetype="dashed", color = "red",size=1,alpha=0.5)+
-                 geom_hline(yintercept=0, color = "black",size=0.5)+
-
-
-                 ggtitle(sprintf("%s correlation S%s & S%s",species_info$Scientific.name[j],combi_width$V1[i],combi_width$V2[i]))+
-                 labs(x = "Lag (Year)", y = 'AXHA correlation coefficient')+
-                 scale_x_continuous(breaks = round(seq(min(combi_data2$lag), max(combi_data2$lag), by = 1),1))+
-                 #scale_y_continuous(breaks = round(seq(min(combi_data$cor), max(combi_data$cor), by = 0.05),1))+
-
-                  theme(plot.title = element_text(hjust = 0.25,size=12,face="bold"))+
-                  theme(axis.text.x = element_text(face="bold",size=9))+
-                  theme(axis.text.y = element_text(face="bold",size=9))+
-                  theme(axis.title.x = element_text(face="bold",size=10,margin = margin(t = 10, r = 0, b = 0, l = 0)))+
-                  theme(axis.title.y = element_text(face="bold",size=10,margin = margin(t = 0, r = 10, b = 0, l = 0)))+
-                  ylim(-1,1)
-    autocor_plot
-    ggsave(autocor_plot,file = paste(path,sprintf("Seascapes/Q1/%s/GAM/CCF/CCF_smooth_%s_%s_ANSC.png",species_info$file_name[j],combi_width$V1[i],combi_width$V2[i]),sep=""), height=3.5, width=4.5,dpi = 600)
-    
-  } 
+    # q=ggplot(data = combi_data, aes(x=Seascapes, y=lag))+#, fill = Accf))+
+    #   #geom_tile(color = "white")+
+    #   geom_point(aes(colour=Accf,size=Accf))+
+    #   scale_color_gradientn(colors=rainbow(11),limits=c(-1,1)) + #rainbow(21)
+    #   theme_minimal()+
+    #   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1,size=9))+
+    #   theme(axis.text.y = element_text(angle = 45, vjust = 1, hjust = 1,size=9))+
+    #   scale_y_continuous(breaks = round(seq(min(combi_data2$lag), max(combi_data2$lag), by = 1),1))
+    # q
+    ggsave(p,file = paste(path,sprintf("Seascapes/Q1/%s/GAM/CCF/Tiled_ccf_%s.png",species_info$file_name[j],species_info$file_name[j]),sep=""), height=2.5, width=8,dpi = 600)
+#   
+  #
+  # for (i in 1:nrow(combi_width)){
+  #   sc_combi=sprintf("%s & %s",combi_width$V1[i],combi_width$V2[i])
+  # 
+  #   #subset data
+  #   combi_data=subset(data, Seascapes==sc_combi)
+  #   combi_data=select(combi_data,-ID,sim)#drop unneccesary columns
+  # 
+  #   # aggregate autocorrelation per lag (mean per lag) for subset
+  #   combi_data2=do.call(data.frame, aggregate(.~lag+Seascapes,data=combi_data,function(x)c(mean=mean(x),se=std_err(x))))
+  #   combi_data2$upr_conf=combi_data2$Accf.mean+(2*combi_data2$Accf.se)
+  #   combi_data2$lwr_conf=combi_data2$Accf.mean-(2*combi_data2$Accf.se)
+  # 
+  #   #create graph
+  #   autocor_plot=ggplot(combi_data2, aes(x = lag, y = Accf.mean))+
+  #                theme_classic()+
+  #                geom_bar(stat="identity",col="black",fill="gray",alpha=0.5,width=0.5)+#col="black",fill="gray",width=0.5)+
+  #                geom_errorbar(aes(ymin=lwr_conf,ymax=upr_conf),width=0.2)+
+  # 
+  #                geom_hline(yintercept=0.3, linetype="dashed", color = "red",size=1,alpha=0.5)+
+  #                geom_hline(yintercept=-0.3, linetype="dashed", color = "red",size=1,alpha=0.5)+
+  #                geom_hline(yintercept=0, color = "black",size=0.5)+
+  # 
+  # 
+  #                ggtitle(sprintf("%s correlation S%s & S%s",species_info$Scientific.name[j],combi_width$V1[i],combi_width$V2[i]))+
+  #                labs(x = "Lag (Year)", y = 'qL-AXHA coefficient')+
+  #                scale_x_continuous(breaks = round(seq(min(combi_data2$lag), max(combi_data2$lag), by = 1),1))+
+  #                #scale_y_continuous(breaks = round(seq(min(combi_data$cor), max(combi_data$cor), by = 0.05),1))+
+  # 
+  #                 theme(plot.title = element_text(hjust = 0.25,size=12,face="bold"))+
+  #                 theme(axis.text.x = element_text(face="bold",size=9))+
+  #                 theme(axis.text.y = element_text(face="bold",size=9))+
+  #                 theme(axis.title.x = element_text(face="bold",size=10,margin = margin(t = 10, r = 0, b = 0, l = 0)))+
+  #                 theme(axis.title.y = element_text(face="bold",size=10,margin = margin(t = 0, r = 10, b = 0, l = 0)))+
+  #                 ylim(-1,1)
+  #   #autocor_plot
+  #   ggsave(autocor_plot,file = paste(path,sprintf("Seascapes/Q1/%s/GAM/CCF/CCF_smooth_%s_%s_ANSC.png",species_info$file_name[j],combi_width$V1[i],combi_width$V2[i]),sep=""), height=3.5, width=4.5,dpi = 600)
+  # 
+  # }
 }
+
 
 ####################################################################
 ###figure to illustrate fitting of gam and posterior simulations####
