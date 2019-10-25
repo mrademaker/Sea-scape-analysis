@@ -1683,7 +1683,7 @@ for (i in 1:nrow(species_info)){
 list_AIC_beta_2= vector("list",16)
 
 
-for (j in 1:16){
+for (j in 1:1){
   data=read.csv(paste(path,sprintf("Data/Filtered_%s.csv",species_info$file_name[j]),sep=""))
   names(data)[names(data) == "id"] <- "Seascapenr"
   print(species_info$file_name[j])
@@ -1709,72 +1709,62 @@ for (j in 1:16){
   #separate subset per seascape, anscombe transform, max scale it and finally rbind back into single dataset----
   #1----
   data_agg1=subset(data_agg,Seascapenr==1)
-  data_agg1$ansc_biomass= nthroot(data_agg1$biomass_kg+(3/8),2)
-  data_agg1$scaled_ansc_biomass=data_agg1$ansc_biomass/max(data_agg1$ansc_biomass)
+  data_agg1$ansc_biomass= 2*nthroot(data_agg1$biomass_kg+(3/8),2)
   data_agg1$scaled_ansc_biomass=scaleTR(data_agg1$ansc_biomass)
   data_agg1$scaled_ansc_biomass[is.na(data_agg1$scaled_ansc_biomass)] <- 0.0001
   
   #2-----
   data_agg2=subset(data_agg,Seascapenr==2)
-  data_agg2$ansc_biomass= nthroot(data_agg2$biomass_kg+(3/8),2)
-  data_agg2$scaled_ansc_biomass=data_agg2$ansc_biomass/max(data_agg2$ansc_biomass)
+  data_agg2$ansc_biomass= 2*nthroot(data_agg2$biomass_kg+(3/8),2)
   data_agg2$scaled_ansc_biomass=scaleTR(data_agg2$ansc_biomass)
   data_agg2$scaled_ansc_biomass[is.na(data_agg2$scaled_ansc_biomass)] <- 0.0001
   
   #3----
   data_agg3=subset(data_agg,Seascapenr==3)
-  data_agg3$ansc_biomass= nthroot(data_agg3$biomass_kg+(3/8),2)
-  data_agg3$scaled_ansc_biomass=data_agg3$ansc_biomass/max(data_agg3$ansc_biomass)
+  data_agg3$ansc_biomass= 2*nthroot(data_agg3$biomass_kg+(3/8),2)
   data_agg3$scaled_ansc_biomass=scaleTR(data_agg3$ansc_biomass)
   data_agg3$scaled_ansc_biomass[is.na(data_agg3$scaled_ansc_biomass)] <- 0.0001
   
   #4----
   data_agg4=subset(data_agg,Seascapenr==4)
-  data_agg4$ansc_biomass= nthroot(data_agg4$biomass_kg+(3/8),2)
-  data_agg4$scaled_ansc_biomass=data_agg4$ansc_biomass/max(data_agg4$ansc_biomass)
+  data_agg4$ansc_biomass= 2*nthroot(data_agg4$biomass_kg+(3/8),2)
   data_agg4$scaled_ansc_biomass=scaleTR(data_agg4$ansc_biomass)
   data_agg4$scaled_ansc_biomass[is.na(data_agg4$scaled_ansc_biomass)] <- 0.0001
   
   #5----
   data_agg5=subset(data_agg,Seascapenr==5)
-  data_agg5$ansc_biomass= nthroot(data_agg5$biomass_kg+(3/8),2)
-  data_agg5$scaled_ansc_biomass=data_agg5$ansc_biomass/max(data_agg5$ansc_biomass)
+  data_agg5$ansc_biomass= 2*nthroot(data_agg5$biomass_kg+(3/8),2)
   data_agg5$scaled_ansc_biomass=scaleTR(data_agg5$ansc_biomass)
   data_agg5$scaled_ansc_biomass[is.na(data_agg5$scaled_ansc_biomass)] <- 0.0001
 
   
   #6----
   data_agg6=subset(data_agg,Seascapenr==6)
-  data_agg6$ansc_biomass= nthroot(data_agg6$biomass_kg+(3/8),2)
-  data_agg6$scaled_ansc_biomass=data_agg6$ansc_biomass/max(data_agg6$ansc_biomass)
+  data_agg6$ansc_biomass= 2*nthroot(data_agg6$biomass_kg+(3/8),2)
   data_agg6$scaled_ansc_biomass=scaleTR(data_agg6$ansc_biomass)
   data_agg6$scaled_ansc_biomass[is.na(data_agg6$scaled_ansc_biomass)] <- 0.0001
   
   #7----
   data_agg7=subset(data_agg,Seascapenr==7)
-  data_agg7$ansc_biomass= nthroot(data_agg7$biomass_kg+(3/8),2)
-  data_agg7$scaled_ansc_biomass=data_agg7$ansc_biomass/max(data_agg7$ansc_biomass)
+  data_agg7$ansc_biomass= 2*nthroot(data_agg7$biomass_kg+(3/8),2)
   data_agg7$scaled_ansc_biomass=scaleTR(data_agg7$ansc_biomass)
   data_agg7$scaled_ansc_biomass[is.na(data_agg7$scaled_ansc_biomass)] <- 0.0001
   
   #8----
   data_agg8=subset(data_agg,Seascapenr==8)
-  data_agg8$ansc_biomass= nthroot(data_agg8$biomass_kg+(3/8),2)
-  data_agg8$scaled_ansc_biomass=data_agg8$ansc_biomass/max(data_agg8$ansc_biomass)
+  data_agg8$ansc_biomass= 2*nthroot(data_agg8$biomass_kg+(3/8),2)
   data_agg8$scaled_ansc_biomass=scaleTR(data_agg8$ansc_biomass)
   data_agg8$scaled_ansc_biomass[is.na(data_agg8$scaled_ansc_biomass)] <- 0.0001
   
   #9----
   data_agg9=subset(data_agg,Seascapenr==9)
-  data_agg9$ansc_biomass= nthroot(data_agg9$biomass_kg+(3/8),2)
-  data_agg9$scaled_ansc_biomass=data_agg9$ansc_biomass/max(data_agg9$ansc_biomass)
+  data_agg9$ansc_biomass= 2*nthroot(data_agg9$biomass_kg+(3/8),2)
   data_agg9$scaled_ansc_biomass=scaleTR(data_agg9$ansc_biomass)
   data_agg9$scaled_ansc_biomass[is.na(data_agg9$scaled_ansc_biomass)] <- 0.0001
-  
+
   #10----
   data_agg10=subset(data_agg,Seascapenr==10)
-  data_agg10$ansc_biomass= nthroot(data_agg10$biomass_kg+(3/8),2)
-  data_agg10$scaled_ansc_biomass=data_agg10$ansc_biomass/max(data_agg10$ansc_biomass)
+  data_agg10$ansc_biomass= 2*nthroot(data_agg10$biomass_kg+(3/8),2)
   data_agg10$scaled_ansc_biomass=scaleTR(data_agg10$ansc_biomass)
   data_agg10$scaled_ansc_biomass[is.na(data_agg10$scaled_ansc_biomass)] <- 0.0001
   
@@ -1792,12 +1782,12 @@ for (j in 1:16){
   mod=bam(scaled_ansc_biomass~Seascapenr+s(Year, by=Seascapenr),data=data_agg_ansc,method="REML",family=betar)
   print("gam fitted")
   #print(AIC(mod))
-  #par(mfrow=c(2,2))
-  #gam.check(mod)
+  par(mfrow=c(2,2))
+  gam.check(mod)
   #list_AIC_beta[[j]]=AIC(mod)
   
-  #dev.copy(png,file=paste(path,sprintf("Seascapes/Q1/%s/GAM/GAM_ANSC_diagnostics_3.png",species_info$file_name[j]),sep=""))
-  #dev.off()
+  dev.copy(png,file=paste(path,sprintf("Seascapes/Q1/%s/GAM/GAM_ANSC_diagnostics_x2.png",species_info$file_name[j]),sep=""))
+  dev.off()
   
   
   # # ################################################################
@@ -2080,114 +2070,116 @@ for (j in 1:16){
   # dev.copy(png,file=paste(path,sprintf("Seascapes/Q1/%s/GAM/GAM_ANSC_autocorrelation_3.png",species_info$file_name[j]),sep=""))
   # dev.off()
 
-  # # #####################################################
-  # # # Compute difference smooths using simultaneous CI's #  ----
-  # # #####################################################
-  combi=c(1,2,3,4,5,6,7,8,9,10)
-  combi_width=as.data.frame(combinations(n=10,r=2,v=combi))
-  
-  pdat=expand.grid(Year=seq(1977,2019, length=126),Seascapenr = c(1,2,3,4,5,6,7,8,9,10))
-  xp <- predict(mod, pdat, type = 'lpmatrix')
-
-  sprintf("Seascapenr%s",combi_width$V1[2])
-  sprintf("Seascapenr%s",combi_width$V2[2])
-  
-
-  diff_df=data.frame(matrix(0, ncol = 3, nrow = 45))
-  names(diff_df)=c("combi","period_diff","ci_width")
-  for (i in 1:nrow(combi_width)){
-    print(i)
-    pdat=expand.grid(Year=seq(1977,2019, length=126),Seascapenr = c(1,2,3,4,5,6,7,8,9,10))
-    xp <- predict(mod, pdat, type = 'lpmatrix')
-    col1 <- grepl(sprintf("Seascapenr%s",combi_width$V1[i]), colnames(xp))
-    col2 <- grepl(sprintf("Seascapenr%s",combi_width$V2[i]), colnames(xp))
-    row1 <- pdat[["Seascapenr"]] == combi_width$V1[i]
-    row2 <- pdat[["Seascapenr"]] == combi_width$V2[i]
-
-    ## difference rows of pred for data from comparison
-    X <- xp[row1, ] - xp[row2, ]
-    ## zero out cols of X related to splines for other lochs
-    X[, ! (col1 | col2)] <- 0
-    ## zero out the parametric cols
-    X[, !grepl('^s\\(', colnames(xp))] <- 0
-
-    #predicted values for differences
-    Vb=vcov(mod)
-    dif <- X %*% coef(mod)
-    se <- sqrt(rowSums((X %*% Vb) * X))
-    pred=cbind(dif,se)
-
-    ## CI of the estimates
-    set.seed(42)
-    N <- 10000
-
-    #predi <- predict(m1, pdat, se.fit = TRUE)
-    #se.fit <- predi$se.fit
-
-    BUdiff <- rmvn(N, mu = rep(0, nrow(Vb)), sig = Vb)
-    Cg <- predict(mod, pdat, type = "lpmatrix")
-    simDev <- Cg %*% t(BUdiff)
-
-    absDev <- abs(sweep(simDev, 1, se, FUN = "/"))
-    masd <- apply(absDev, 2L, max)
-    crit <- quantile(masd, prob = 0.95, type = 8)
-
-    newd <- expand.grid(Year = seq(1977, 2019, length = 126))
-
-    S12pred <- transform(cbind(data.frame(pred), newd),
-                         uprP = V1 + (2 * se),
-                         lwrP = V1 - (2 * se),
-                         uprS = V1 + (crit * se),
-                         lwrS = V1 - (crit * se))
-    S12pred$sigdif <-ifelse(S12pred$lwrS<0 & S12pred$uprS<0,"lower",ifelse(S12pred$lwrS>0 & S12pred$uprS>0,"higher","no"))
-    S12higher=S12pred
-    S12higher["V1"][S12pred["sigdif"]!="higher"]=NA
-    S12lower=S12pred
-    S12lower["V1"][S12pred["sigdif"]!="lower"]=NA
-  
-    #nrow(S12pred)
-    #length(which(S12pred$sigdif=="higher"))
-    #length(which(S12pred$sigdif=="lower"))
-    
-    per_diff=(length(which(S12pred$sigdif=="higher"))+length(which(S12pred$sigdif=="lower")))/nrow(S12pred)
-    S12pred$ci_width=S12pred$uprS-S12pred$lwrS
-    ci_width=mean(S12pred$ci_width)  
-      
-    diff_df$combi[i]=  sprintf("%s - %s",combi_width$V1[i],combi_width$V2[i])
-    diff_df$period_diff[i]=per_diff  
-    diff_df$ci_width[i]=ci_width  
-        
-     
-    DifS12plot=
-      ggplot(S12pred, aes(x = Year, y = V1)) +
-      theme_bw()+
-      #geom_ribbon(aes(ymin = lwrP, ymax = uprP), alpha = 0.2) +
-      geom_ribbon(aes(ymin = lwrS, ymax = uprS), alpha = 0.2) +
-      geom_line(data=S12pred,aes(x=Year,y=V1),col="black",size=0.5) +
-      geom_line(data=S12higher,aes(x=Year,y=V1),col="seagreen1",size=1)+
-      geom_line(data=S12lower,aes(x=Year,y=V1),col="red",size=1)+
-      ggtitle(sprintf("%s Seascape %s - %s",species_info$Scientific.name[j],combi_width$V1[i],combi_width$V2[i]))+
-      labs(x = "Year", y = 'Difference Fish biomass trend')+
-      theme(plot.title = element_text(hjust = 0.25,size=12,face="bold"))+
-      theme(axis.text.x = element_text(face="bold",size=9))+
-      theme(axis.text.y = element_text(face="bold",size=9))+
-      theme(axis.title.x = element_text(face="bold",size=10,margin = margin(t = 10, r = 0, b = 0, l = 0)))+
-      theme(axis.title.y = element_text(face="bold",size=10,margin = margin(t = 0, r = 10, b = 0, l = 0)))+
-      theme(axis.line = element_line(size=1))
-      ggsave(DifS12plot,file = paste(path,sprintf("Seascapes/Q1/%s/GAM/Diff_smooth/Diff_smooth_%s_%s.png",species_info$file_name[j],combi_width$V1[i],combi_width$V2[i]),sep=""), height=3.5, width=4.5,dpi = 600)
-  #DifS12plot
-  # 
-  }
-  write.csv(diff_df,file = paste(path,sprintf("Seascapes/Q1/%s/GAM/Diff_smooth/num_diff.csv",species_info$file_name[j]),sep=""))
+#   # # #####################################################
+#   # # # Compute difference smooths using simultaneous CI's #  ----
+#   # # #####################################################
+#   combi=c(1,2,3,4,5,6,7,8,9,10)
+#   combi_width=as.data.frame(combinations(n=10,r=2,v=combi))
+#   
+#   pdat=expand.grid(Year=seq(1977,2019, length=126),Seascapenr = c(1,2,3,4,5,6,7,8,9,10))
+#   xp <- predict(mod, pdat, type = 'lpmatrix')
+# 
+#   sprintf("Seascapenr%s",combi_width$V1[2])
+#   sprintf("Seascapenr%s",combi_width$V2[2])
+#   
+# 
+#   diff_df=data.frame(matrix(0, ncol = 3, nrow = 45))
+#   names(diff_df)=c("combi","period_diff","ci_width")
+#   for (i in 1:nrow(combi_width)){
+#     print(i)
+#     pdat=expand.grid(Year=seq(1977,2019, length=126),Seascapenr = c(1,2,3,4,5,6,7,8,9,10))
+#     xp <- predict(mod, pdat, type = 'lpmatrix')
+#     col1 <- grepl(sprintf("Seascapenr%s",combi_width$V1[i]), colnames(xp))
+#     col2 <- grepl(sprintf("Seascapenr%s",combi_width$V2[i]), colnames(xp))
+#     row1 <- pdat[["Seascapenr"]] == combi_width$V1[i]
+#     row2 <- pdat[["Seascapenr"]] == combi_width$V2[i]
+# 
+#     ## difference rows of pred for data from comparison
+#     X <- xp[row1, ] - xp[row2, ]
+#     ## zero out cols of X related to splines for other lochs
+#     X[, ! (col1 | col2)] <- 0
+#     ## zero out the parametric cols
+#     X[, !grepl('^s\\(', colnames(xp))] <- 0
+# 
+#     #predicted values for differences
+#     Vb=vcov(mod)
+#     dif <- X %*% coef(mod)
+#     se <- sqrt(rowSums((X %*% Vb) * X))
+#     pred=cbind(dif,se)
+# 
+#     ## CI of the estimates
+#     set.seed(42)
+#     N <- 10000
+# 
+#     #predi <- predict(m1, pdat, se.fit = TRUE)
+#     #se.fit <- predi$se.fit
+# 
+#     BUdiff <- rmvn(N, mu = rep(0, nrow(Vb)), sig = Vb)
+#     Cg <- predict(mod, pdat, type = "lpmatrix")
+#     simDev <- Cg %*% t(BUdiff)
+# 
+#     absDev <- abs(sweep(simDev, 1, se, FUN = "/"))
+#     masd <- apply(absDev, 2L, max)
+#     crit <- quantile(masd, prob = 0.95, type = 8)
+# 
+#     newd <- expand.grid(Year = seq(1977, 2019, length = 126))
+# 
+#     S12pred <- transform(cbind(data.frame(pred), newd),
+#                          uprP = V1 + (2 * se),
+#                          lwrP = V1 - (2 * se),
+#                          uprS = V1 + (crit * se),
+#                          lwrS = V1 - (crit * se))
+#     S12pred$sigdif <-ifelse(S12pred$lwrS<0 & S12pred$uprS<0,"lower",ifelse(S12pred$lwrS>0 & S12pred$uprS>0,"higher","no"))
+#     S12higher=S12pred
+#     S12higher["V1"][S12pred["sigdif"]!="higher"]=NA
+#     S12lower=S12pred
+#     S12lower["V1"][S12pred["sigdif"]!="lower"]=NA
+#   
+#     #nrow(S12pred)
+#     #length(which(S12pred$sigdif=="higher"))
+#     #length(which(S12pred$sigdif=="lower"))
+#     
+#     per_diff=(length(which(S12pred$sigdif=="higher"))+length(which(S12pred$sigdif=="lower")))/nrow(S12pred)
+#     S12pred$ci_width=S12pred$uprS-S12pred$lwrS
+#     ci_width=mean(S12pred$ci_width)  
+#       
+#     diff_df$combi[i]=  sprintf("%s - %s",combi_width$V1[i],combi_width$V2[i])
+#     diff_df$period_diff[i]=per_diff  
+#     diff_df$ci_width[i]=ci_width  
+#         
+#      
+#     DifS12plot=
+#       ggplot(S12pred, aes(x = Year, y = V1)) +
+#       theme_bw()+
+#       #geom_ribbon(aes(ymin = lwrP, ymax = uprP), alpha = 0.2) +
+#       geom_ribbon(aes(ymin = lwrS, ymax = uprS), alpha = 0.2) +
+#       geom_line(data=S12pred,aes(x=Year,y=V1),col="black",size=0.5) +
+#       geom_line(data=S12higher,aes(x=Year,y=V1),col="seagreen1",size=1)+
+#       geom_line(data=S12lower,aes(x=Year,y=V1),col="red",size=1)+
+#       ggtitle(sprintf("%s Seascape %s - %s",species_info$Scientific.name[j],combi_width$V1[i],combi_width$V2[i]))+
+#       labs(x = "Year", y = 'Difference Fish biomass trend')+
+#       theme(plot.title = element_text(hjust = 0.25,size=12,face="bold"))+
+#       theme(axis.text.x = element_text(face="bold",size=9))+
+#       theme(axis.text.y = element_text(face="bold",size=9))+
+#       theme(axis.title.x = element_text(face="bold",size=10,margin = margin(t = 10, r = 0, b = 0, l = 0)))+
+#       theme(axis.title.y = element_text(face="bold",size=10,margin = margin(t = 0, r = 10, b = 0, l = 0)))+
+#       theme(axis.line = element_line(size=1))
+#       ggsave(DifS12plot,file = paste(path,sprintf("Seascapes/Q1/%s/GAM/Diff_smooth/Diff_smooth_%s_%s.png",species_info$file_name[j],combi_width$V1[i],combi_width$V2[i]),sep=""), height=3.5, width=4.5,dpi = 600)
+#   #DifS12plot
+#   # 
+#   }
+#   write.csv(diff_df,file = paste(path,sprintf("Seascapes/Q1/%s/GAM/Diff_smooth/num_diff.csv",species_info$file_name[j]),sep=""))
 }
 
-
+summary(mod)
 #save different smooths in single large image            
-for (j in 1:16){
+for (j in 2:16){
   print(j)
-  p=paste(path,sprintf("graphs/Seascapes/Q1/%s/GAM/Diff_smooth",species_info$file_name[j]),sep="")
-  filenames=list.files(path=p,pattern="*ANSC.png",full.names=TRUE)
-  
+  path
+  p=paste(path,sprintf("Seascapes/Q1/%s/GAM/Diff_smooth",species_info$file_name[j]),sep="")
+  #p
+  filenames=list.files(path=p,pattern="*.png",full.names=TRUE)
+  #filenames
   rl <- lapply(filenames, png::readPNG)
   gl <- lapply(rl, grid::rasterGrob)
   cp=grid.arrange(gl[[1]],gl[[2]],gl[[3]],gl[[4]],gl[[5]],gl[[6]],
@@ -2197,13 +2189,9 @@ for (j in 1:16){
                   gl[[25]],gl[[26]],gl[[27]],gl[[28]],gl[[29]],gl[[30]],
                   gl[[31]],gl[[32]],gl[[33]],gl[[34]],gl[[35]],gl[[36]],
                   gl[[37]],gl[[38]],gl[[39]],gl[[40]],gl[[41]],gl[[42]],
-                  gl[[43]],gl[[44]],gl[[45]],ncol=6,nrow=6)
-  ggsave(cp,file=paste(path,sprintf("graphs/Seascapes/Q1/%s/GAM/Diff_smooth/Diff_smooths_ANSC.png",species_info$file_name[j]),sep=""),height=21, width=27,dpi = 300)
+                  gl[[43]],gl[[44]],gl[[45]],ncol=9,nrow=5)
+  ggsave(cp,file=paste(path,sprintf("Seascapes/Q1/%s/GAM/Diff_smooth/Diff_smooths.png",species_info$file_name[j]),sep=""),height=15, width=25,dpi = 300)
 }
-
-
-
-
 
 
 ###########################################
@@ -2234,75 +2222,66 @@ for (j in 1:16){
   
   #separate subset per seascape, anscombe transform, max scale it and finally rbind back into single dataset----
   #1----
+  #1----
   data_agg1=subset(data_agg,Seascapenr==1)
-  data_agg1$ansc_biomass= nthroot(data_agg1$biomass_kg+(3/8),2)
-  data_agg1$scaled_ansc_biomass=data_agg1$ansc_biomass/max(data_agg1$ansc_biomass)
+  data_agg1$ansc_biomass= 2*nthroot(data_agg1$biomass_kg+(3/8),2)
   data_agg1$scaled_ansc_biomass=scaleTR(data_agg1$ansc_biomass)
-  data_agg1$scaled_ansc_biomass[is.na(data_agg1$scaled_ansc_biomass)] <- 0.0002
+  data_agg1$scaled_ansc_biomass[is.na(data_agg1$scaled_ansc_biomass)] <- 0.0001
   
   #2-----
   data_agg2=subset(data_agg,Seascapenr==2)
-  data_agg2$ansc_biomass= nthroot(data_agg2$biomass_kg+(3/8),2)
-  data_agg2$scaled_ansc_biomass=data_agg2$ansc_biomass/max(data_agg2$ansc_biomass)
+  data_agg2$ansc_biomass= 2*nthroot(data_agg2$biomass_kg+(3/8),2)
   data_agg2$scaled_ansc_biomass=scaleTR(data_agg2$ansc_biomass)
-  data_agg2$scaled_ansc_biomass[is.na(data_agg2$scaled_ansc_biomass)] <- 0.0002
+  data_agg2$scaled_ansc_biomass[is.na(data_agg2$scaled_ansc_biomass)] <- 0.0001
   
   #3----
   data_agg3=subset(data_agg,Seascapenr==3)
-  data_agg3$ansc_biomass= nthroot(data_agg3$biomass_kg+(3/8),2)
-  data_agg3$scaled_ansc_biomass=data_agg3$ansc_biomass/max(data_agg3$ansc_biomass)
+  data_agg3$ansc_biomass= 2*nthroot(data_agg3$biomass_kg+(3/8),2)
   data_agg3$scaled_ansc_biomass=scaleTR(data_agg3$ansc_biomass)
-  data_agg3$scaled_ansc_biomass[is.na(data_agg3$scaled_ansc_biomass)] <- 0.0002
+  data_agg3$scaled_ansc_biomass[is.na(data_agg3$scaled_ansc_biomass)] <- 0.0001
   
   #4----
   data_agg4=subset(data_agg,Seascapenr==4)
-  data_agg4$ansc_biomass= nthroot(data_agg4$biomass_kg+(3/8),2)
-  data_agg4$scaled_ansc_biomass=data_agg4$ansc_biomass/max(data_agg4$ansc_biomass)
+  data_agg4$ansc_biomass= 2*nthroot(data_agg4$biomass_kg+(3/8),2)
   data_agg4$scaled_ansc_biomass=scaleTR(data_agg4$ansc_biomass)
-  data_agg4$scaled_ansc_biomass[is.na(data_agg4$scaled_ansc_biomass)] <- 0.0002
+  data_agg4$scaled_ansc_biomass[is.na(data_agg4$scaled_ansc_biomass)] <- 0.0001
   
   #5----
   data_agg5=subset(data_agg,Seascapenr==5)
-  data_agg5$ansc_biomass= nthroot(data_agg5$biomass_kg+(3/8),2)
-  data_agg5$scaled_ansc_biomass=data_agg5$ansc_biomass/max(data_agg5$ansc_biomass)
+  data_agg5$ansc_biomass= 2*nthroot(data_agg5$biomass_kg+(3/8),2)
   data_agg5$scaled_ansc_biomass=scaleTR(data_agg5$ansc_biomass)
-  data_agg5$scaled_ansc_biomass[is.na(data_agg5$scaled_ansc_biomass)] <- 0.0002
+  data_agg5$scaled_ansc_biomass[is.na(data_agg5$scaled_ansc_biomass)] <- 0.0001
   
   
   #6----
   data_agg6=subset(data_agg,Seascapenr==6)
-  data_agg6$ansc_biomass= nthroot(data_agg6$biomass_kg+(3/8),2)
-  data_agg6$scaled_ansc_biomass=data_agg6$ansc_biomass/max(data_agg6$ansc_biomass)
+  data_agg6$ansc_biomass= 2*nthroot(data_agg6$biomass_kg+(3/8),2)
   data_agg6$scaled_ansc_biomass=scaleTR(data_agg6$ansc_biomass)
-  data_agg6$scaled_ansc_biomass[is.na(data_agg6$scaled_ansc_biomass)] <- 0.0002
+  data_agg6$scaled_ansc_biomass[is.na(data_agg6$scaled_ansc_biomass)] <- 0.0001
   
   #7----
   data_agg7=subset(data_agg,Seascapenr==7)
-  data_agg7$ansc_biomass= nthroot(data_agg7$biomass_kg+(3/8),2)
-  data_agg7$scaled_ansc_biomass=data_agg7$ansc_biomass/max(data_agg7$ansc_biomass)
+  data_agg7$ansc_biomass= 2*nthroot(data_agg7$biomass_kg+(3/8),2)
   data_agg7$scaled_ansc_biomass=scaleTR(data_agg7$ansc_biomass)
-  data_agg7$scaled_ansc_biomass[is.na(data_agg7$scaled_ansc_biomass)] <- 0.0002
+  data_agg7$scaled_ansc_biomass[is.na(data_agg7$scaled_ansc_biomass)] <- 0.0001
   
   #8----
   data_agg8=subset(data_agg,Seascapenr==8)
-  data_agg8$ansc_biomass= nthroot(data_agg8$biomass_kg+(3/8),2)
-  data_agg8$scaled_ansc_biomass=data_agg8$ansc_biomass/max(data_agg8$ansc_biomass)
+  data_agg8$ansc_biomass= 2*nthroot(data_agg8$biomass_kg+(3/8),2)
   data_agg8$scaled_ansc_biomass=scaleTR(data_agg8$ansc_biomass)
-  data_agg8$scaled_ansc_biomass[is.na(data_agg8$scaled_ansc_biomass)] <- 0.0002
+  data_agg8$scaled_ansc_biomass[is.na(data_agg8$scaled_ansc_biomass)] <- 0.0001
   
   #9----
   data_agg9=subset(data_agg,Seascapenr==9)
-  data_agg9$ansc_biomass= nthroot(data_agg9$biomass_kg+(3/8),2)
-  data_agg9$scaled_ansc_biomass=data_agg9$ansc_biomass/max(data_agg9$ansc_biomass)
+  data_agg9$ansc_biomass= 2*nthroot(data_agg9$biomass_kg+(3/8),2)
   data_agg9$scaled_ansc_biomass=scaleTR(data_agg9$ansc_biomass)
-  data_agg9$scaled_ansc_biomass[is.na(data_agg9$scaled_ansc_biomass)] <- 0.0002
+  data_agg9$scaled_ansc_biomass[is.na(data_agg9$scaled_ansc_biomass)] <- 0.0001
   
   #10----
   data_agg10=subset(data_agg,Seascapenr==10)
-  data_agg10$ansc_biomass= nthroot(data_agg10$biomass_kg+(3/8),2)
-  data_agg10$scaled_ansc_biomass=data_agg10$ansc_biomass/max(data_agg10$ansc_biomass)
+  data_agg10$ansc_biomass= 2*nthroot(data_agg10$biomass_kg+(3/8),2)
   data_agg10$scaled_ansc_biomass=scaleTR(data_agg10$ansc_biomass)
-  data_agg10$scaled_ansc_biomass[is.na(data_agg10$scaled_ansc_biomass)] <- 0.0002
+  data_agg10$scaled_ansc_biomass[is.na(data_agg10$scaled_ansc_biomass)] <- 0.0001
   
   #rbind----
   data_agg_ansc=rbind(data_agg1,data_agg2,data_agg3,data_agg4,data_agg5,data_agg6,data_agg7,data_agg8,data_agg9,data_agg10)
@@ -2327,8 +2306,8 @@ for (j in 1:16){
   colnames(newdat)="Year"
   
   #100 simulations from model posterior distribution
-  sim_dat=as.data.frame(smooth_samples(mod,n=100,new_data=newdat,n_vals=43))
-  sim_dat2=data.matrix(smooth_samples(mod,n=100,new_data=newdat,n_vals=43))
+  sim_dat=as.data.frame(smooth_samples(mod,n=1000,new_data=newdat,n_vals=43))
+  sim_dat2=data.matrix(smooth_samples(mod,n=1000,new_data=newdat,n_vals=43))
   
   Year=floor(as.numeric(sim_dat2[,".x1"]))
   sim_dat2=cbind(sim_dat2,Year)
@@ -2349,7 +2328,7 @@ for (j in 1:16){
           sv1=sim_dat2[sim_dat2[,"Seascapenr"]==V1,] #subset seascape x
           sv2=sim_dat2[sim_dat2[,"Seascapenr"]==V2,] #subset seascape y
           
-          simulations=c(seq(1:100))
+          simulations=c(seq(1:1000))
           
           sapply(simulations,FUN=function(y){
 
@@ -2403,21 +2382,21 @@ for (j in 1:16){
     #combi_data$S1=as.numeric(add_cols[,1])
     #combi_data$S2=as.numeric(add_cols[,2])
     #combi_data$Seascapes2=as.numeric(gsub(" & ","",combi_data$Seascapes))
-    combi_data$Seascapes=gsub("&","-",combi_data$Seascapes)
-    combi_data$Seascapes=factor(combi_data$Seascapes, levels = c("1 - 2", "1 - 3", "1 - 4", "1 - 5", "1 - 6", "1 - 7", "1 - 8", "1 - 9", "1 - 10",
-                                                                 "2 - 3", "2 - 4", "2 - 5", "2 - 6", "2 - 7", "2 - 8", "2 - 9", "2 - 10", "3 - 4",
-                                                                 "3 - 5", "3 - 6", "3 - 7", "3 - 8", "3 - 9", "3 - 10", "4 - 5", "4 - 6", "4 - 7",
-                                                                 "4 - 8", "4 - 9", "4 - 10", "5 - 6","5 - 7", "5 - 8", "5 - 9", "5 - 10", "6 - 7",
-                                                                 "6 - 8", "6 - 9", "6 - 10", "7 - 8", "7 - 9", "7 - 10", "8 - 9", "8 - 10", "9 - 10"))
-  
-    p=ggplot(data = combi_data, aes(x=Seascapes, y=lag, fill = Accf))+
-      geom_tile(color = "white")+
-      scale_fill_gradientn(colors=rainbow(11),limits=c(-1,1)) + #rainbow(21)
-      theme_minimal()+
-      theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1,size=9))+
-      theme(axis.text.y = element_text(angle = 45, vjust = 1, hjust = 1,size=9))+
-      scale_y_continuous(breaks = round(seq(min(combi_data2$lag), max(combi_data2$lag), by = 1),1))
-    p
+    # combi_data$Seascapes=gsub("&","-",combi_data$Seascapes)
+    # combi_data$Seascapes=factor(combi_data$Seascapes, levels = c("1 - 2", "1 - 3", "1 - 4", "1 - 5", "1 - 6", "1 - 7", "1 - 8", "1 - 9", "1 - 10",
+    #                                                              "2 - 3", "2 - 4", "2 - 5", "2 - 6", "2 - 7", "2 - 8", "2 - 9", "2 - 10", "3 - 4",
+    #                                                              "3 - 5", "3 - 6", "3 - 7", "3 - 8", "3 - 9", "3 - 10", "4 - 5", "4 - 6", "4 - 7",
+    #                                                              "4 - 8", "4 - 9", "4 - 10", "5 - 6","5 - 7", "5 - 8", "5 - 9", "5 - 10", "6 - 7",
+    #                                                              "6 - 8", "6 - 9", "6 - 10", "7 - 8", "7 - 9", "7 - 10", "8 - 9", "8 - 10", "9 - 10"))
+    # 
+    # # p=ggplot(data = combi_data, aes(x=Seascapes, y=lag, fill = Accf))+
+    #   geom_tile(color = "white")+
+    #   scale_fill_gradientn(colors=rainbow(11),limits=c(-1,1)) + #rainbow(21)
+    #   theme_minimal()+
+    #   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1,size=9))+
+    #   theme(axis.text.y = element_text(angle = 45, vjust = 1, hjust = 1,size=9))+
+    #   scale_y_continuous(breaks = round(seq(min(combi_data2$lag), max(combi_data2$lag), by = 1),1))
+    # p
     
     # q=ggplot(data = combi_data, aes(x=Seascapes, y=lag))+#, fill = Accf))+
     #   #geom_tile(color = "white")+
@@ -2428,47 +2407,47 @@ for (j in 1:16){
     #   theme(axis.text.y = element_text(angle = 45, vjust = 1, hjust = 1,size=9))+
     #   scale_y_continuous(breaks = round(seq(min(combi_data2$lag), max(combi_data2$lag), by = 1),1))
     # q
-    ggsave(p,file = paste(path,sprintf("Seascapes/Q1/%s/GAM/CCF/Tiled_ccf_%s.png",species_info$file_name[j],species_info$file_name[j]),sep=""), height=2.5, width=8,dpi = 600)
+    # ggsave(p,file = paste(path,sprintf("Seascapes/Q1/%s/GAM/CCF/Tiled_ccf_%s.png",species_info$file_name[j],species_info$file_name[j]),sep=""), height=2.5, width=8,dpi = 600)
 #   
   #
-  # for (i in 1:nrow(combi_width)){
-  #   sc_combi=sprintf("%s & %s",combi_width$V1[i],combi_width$V2[i])
-  # 
-  #   #subset data
-  #   combi_data=subset(data, Seascapes==sc_combi)
-  #   combi_data=select(combi_data,-ID,sim)#drop unneccesary columns
-  # 
-  #   # aggregate autocorrelation per lag (mean per lag) for subset
-  #   combi_data2=do.call(data.frame, aggregate(.~lag+Seascapes,data=combi_data,function(x)c(mean=mean(x),se=std_err(x))))
-  #   combi_data2$upr_conf=combi_data2$Accf.mean+(2*combi_data2$Accf.se)
-  #   combi_data2$lwr_conf=combi_data2$Accf.mean-(2*combi_data2$Accf.se)
-  # 
-  #   #create graph
-  #   autocor_plot=ggplot(combi_data2, aes(x = lag, y = Accf.mean))+
-  #                theme_classic()+
-  #                geom_bar(stat="identity",col="black",fill="gray",alpha=0.5,width=0.5)+#col="black",fill="gray",width=0.5)+
-  #                geom_errorbar(aes(ymin=lwr_conf,ymax=upr_conf),width=0.2)+
-  # 
-  #                geom_hline(yintercept=0.3, linetype="dashed", color = "red",size=1,alpha=0.5)+
-  #                geom_hline(yintercept=-0.3, linetype="dashed", color = "red",size=1,alpha=0.5)+
-  #                geom_hline(yintercept=0, color = "black",size=0.5)+
-  # 
-  # 
-  #                ggtitle(sprintf("%s correlation S%s & S%s",species_info$Scientific.name[j],combi_width$V1[i],combi_width$V2[i]))+
-  #                labs(x = "Lag (Year)", y = 'qL-AXHA coefficient')+
-  #                scale_x_continuous(breaks = round(seq(min(combi_data2$lag), max(combi_data2$lag), by = 1),1))+
-  #                #scale_y_continuous(breaks = round(seq(min(combi_data$cor), max(combi_data$cor), by = 0.05),1))+
-  # 
-  #                 theme(plot.title = element_text(hjust = 0.25,size=12,face="bold"))+
-  #                 theme(axis.text.x = element_text(face="bold",size=9))+
-  #                 theme(axis.text.y = element_text(face="bold",size=9))+
-  #                 theme(axis.title.x = element_text(face="bold",size=10,margin = margin(t = 10, r = 0, b = 0, l = 0)))+
-  #                 theme(axis.title.y = element_text(face="bold",size=10,margin = margin(t = 0, r = 10, b = 0, l = 0)))+
-  #                 ylim(-1,1)
-  #   #autocor_plot
-  #   ggsave(autocor_plot,file = paste(path,sprintf("Seascapes/Q1/%s/GAM/CCF/CCF_smooth_%s_%s_ANSC.png",species_info$file_name[j],combi_width$V1[i],combi_width$V2[i]),sep=""), height=3.5, width=4.5,dpi = 600)
-  # 
-  # }
+  for (i in 1:nrow(combi_width)){
+    sc_combi=sprintf("%s & %s",combi_width$V1[i],combi_width$V2[i])
+
+    #subset data
+    combi_data=subset(data, Seascapes==sc_combi)
+    combi_data=select(combi_data,-ID,sim)#drop unneccesary columns
+
+    # aggregate autocorrelation per lag (mean per lag) for subset
+    combi_data2=do.call(data.frame, aggregate(.~lag+Seascapes,data=combi_data,function(x)c(mean=mean(x),se=std_err(x))))
+    combi_data2$upr_conf=combi_data2$Accf.mean+(2*combi_data2$Accf.se)
+    combi_data2$lwr_conf=combi_data2$Accf.mean-(2*combi_data2$Accf.se)
+
+    #create graph
+    autocor_plot=ggplot(combi_data2, aes(x = lag, y = Accf.mean))+
+                 theme_classic()+
+                 geom_bar(stat="identity",col="black",fill="gray",alpha=0.5,width=0.5)+#col="black",fill="gray",width=0.5)+
+                 geom_errorbar(aes(ymin=lwr_conf,ymax=upr_conf),width=0.2)+
+
+                 geom_hline(yintercept=0.3, linetype="dashed", color = "red",size=1,alpha=0.5)+
+                 geom_hline(yintercept=-0.3, linetype="dashed", color = "red",size=1,alpha=0.5)+
+                 geom_hline(yintercept=0, color = "black",size=0.5)+
+
+
+                 ggtitle(sprintf("%s correlation S%s & S%s",species_info$Scientific.name[j],combi_width$V1[i],combi_width$V2[i]))+
+                 labs(x = "Lag (Year)", y = 'qL-AXHA coefficient')+
+                 scale_x_continuous(breaks = round(seq(min(combi_data2$lag), max(combi_data2$lag), by = 1),1))+
+                 #scale_y_continuous(breaks = round(seq(min(combi_data$cor), max(combi_data$cor), by = 0.05),1))+
+
+                  theme(plot.title = element_text(hjust = 0.25,size=12,face="bold"))+
+                  theme(axis.text.x = element_text(face="bold",size=9))+
+                  theme(axis.text.y = element_text(face="bold",size=9))+
+                  theme(axis.title.x = element_text(face="bold",size=10,margin = margin(t = 10, r = 0, b = 0, l = 0)))+
+                  theme(axis.title.y = element_text(face="bold",size=10,margin = margin(t = 0, r = 10, b = 0, l = 0)))+
+                  ylim(-1,1)
+    #autocor_plot
+    ggsave(autocor_plot,file = paste(path,sprintf("Seascapes/Q1/%s/GAM/CCF/CCF_smooth_%s_%s_ANSC.png",species_info$file_name[j],combi_width$V1[i],combi_width$V2[i]),sep=""), height=3.5, width=4.5,dpi = 600)
+
+  }
 }
 
 
@@ -2500,80 +2479,70 @@ data_agg=aggregate(Total_wgt ~ ID+Year+Seascapenr+Species, data=ssc_data, sum)
 data_agg$biomass_kg=data_agg$Total_wgt/1000
 
 #separate subset per seascape, anscombe transform, max scale it and finally rbind back into single dataset----
-  #1----
-  data_agg1=subset(data_agg,Seascapenr==1)
-  data_agg1$ansc_biomass= nthroot(data_agg1$biomass_kg+(3/8),2)
-  data_agg1$scaled_ansc_biomass=data_agg1$ansc_biomass/max(data_agg1$ansc_biomass)
-  data_agg1$scaled_ansc_biomass=scaleTR(data_agg1$ansc_biomass)
-  data_agg1$scaled_ansc_biomass[is.na(data_agg1$scaled_ansc_biomass)] <- 0.0002
-  
-  #2-----
-  data_agg2=subset(data_agg,Seascapenr==2)
-  data_agg2$ansc_biomass= nthroot(data_agg2$biomass_kg+(3/8),2)
-  data_agg2$scaled_ansc_biomass=data_agg2$ansc_biomass/max(data_agg2$ansc_biomass)
-  data_agg2$scaled_ansc_biomass=scaleTR(data_agg2$ansc_biomass)
-  data_agg2$scaled_ansc_biomass[is.na(data_agg2$scaled_ansc_biomass)] <- 0.0002
-  
-  #3----
-  data_agg3=subset(data_agg,Seascapenr==3)
-  data_agg3$ansc_biomass= nthroot(data_agg3$biomass_kg+(3/8),2)
-  data_agg3$scaled_ansc_biomass=data_agg3$ansc_biomass/max(data_agg3$ansc_biomass)
-  data_agg3$scaled_ansc_biomass=scaleTR(data_agg3$ansc_biomass)
-  data_agg3$scaled_ansc_biomass[is.na(data_agg3$scaled_ansc_biomass)] <- 0.0002
-  
-  #4----
-  data_agg4=subset(data_agg,Seascapenr==4)
-  data_agg4$ansc_biomass= nthroot(data_agg4$biomass_kg+(3/8),2)
-  data_agg4$scaled_ansc_biomass=data_agg4$ansc_biomass/max(data_agg4$ansc_biomass)
-  data_agg4$scaled_ansc_biomass=scaleTR(data_agg4$ansc_biomass)
-  data_agg4$scaled_ansc_biomass[is.na(data_agg4$scaled_ansc_biomass)] <- 0.0002
-  
-  #5----
-  data_agg5=subset(data_agg,Seascapenr==5)
-  data_agg5$ansc_biomass= nthroot(data_agg5$biomass_kg+(3/8),2)
-  data_agg5$scaled_ansc_biomass=data_agg5$ansc_biomass/max(data_agg5$ansc_biomass)
-  data_agg5$scaled_ansc_biomass=scaleTR(data_agg5$ansc_biomass)
-  data_agg5$scaled_ansc_biomass[is.na(data_agg5$scaled_ansc_biomass)] <- 0.0002
-  
-  
-  #6----
-  data_agg6=subset(data_agg,Seascapenr==6)
-  data_agg6$ansc_biomass= nthroot(data_agg6$biomass_kg+(3/8),2)
-  data_agg6$scaled_ansc_biomass=data_agg6$ansc_biomass/max(data_agg6$ansc_biomass)
-  data_agg6$scaled_ansc_biomass=scaleTR(data_agg6$ansc_biomass)
-  data_agg6$scaled_ansc_biomass[is.na(data_agg6$scaled_ansc_biomass)] <- 0.0002
-  
-  #7----
-  data_agg7=subset(data_agg,Seascapenr==7)
-  data_agg7$ansc_biomass= nthroot(data_agg7$biomass_kg+(3/8),2)
-  data_agg7$scaled_ansc_biomass=data_agg7$ansc_biomass/max(data_agg7$ansc_biomass)
-  data_agg7$scaled_ansc_biomass=scaleTR(data_agg7$ansc_biomass)
-  data_agg7$scaled_ansc_biomass[is.na(data_agg7$scaled_ansc_biomass)] <- 0.0002
-  
-  #8----
-  data_agg8=subset(data_agg,Seascapenr==8)
-  data_agg8$ansc_biomass= nthroot(data_agg8$biomass_kg+(3/8),2)
-  data_agg8$scaled_ansc_biomass=data_agg8$ansc_biomass/max(data_agg8$ansc_biomass)
-  data_agg8$scaled_ansc_biomass=scaleTR(data_agg8$ansc_biomass)
-  data_agg8$scaled_ansc_biomass[is.na(data_agg8$scaled_ansc_biomass)] <- 0.0002
-  
-  #9----
-  data_agg9=subset(data_agg,Seascapenr==9)
-  data_agg9$ansc_biomass= nthroot(data_agg9$biomass_kg+(3/8),2)
-  data_agg9$scaled_ansc_biomass=data_agg9$ansc_biomass/max(data_agg9$ansc_biomass)
-  data_agg9$scaled_ansc_biomass=scaleTR(data_agg9$ansc_biomass)
-  data_agg9$scaled_ansc_biomass[is.na(data_agg9$scaled_ansc_biomass)] <- 0.0002
-  
-  #10----
-  data_agg10=subset(data_agg,Seascapenr==10)
-  data_agg10$ansc_biomass= nthroot(data_agg10$biomass_kg+(3/8),2)
-  data_agg10$scaled_ansc_biomass=data_agg10$ansc_biomass/max(data_agg10$ansc_biomass)
-  data_agg10$scaled_ansc_biomass=scaleTR(data_agg10$ansc_biomass)
-  data_agg10$scaled_ansc_biomass[is.na(data_agg10$scaled_ansc_biomass)] <- 0.0002
-  
-  #rbind----
-  data_agg_ansc=rbind(data_agg1,data_agg2,data_agg3,data_agg4,data_agg5,data_agg6,data_agg7,data_agg8,data_agg9,data_agg10)
-  
+#1----
+data_agg1=subset(data_agg,Seascapenr==1)
+data_agg1$ansc_biomass= 2*nthroot(data_agg1$biomass_kg+(3/8),2)
+data_agg1$scaled_ansc_biomass=scaleTR(data_agg1$ansc_biomass)
+data_agg1$scaled_ansc_biomass[is.na(data_agg1$scaled_ansc_biomass)] <- 0.0001
+
+#2-----
+data_agg2=subset(data_agg,Seascapenr==2)
+data_agg2$ansc_biomass= 2*nthroot(data_agg2$biomass_kg+(3/8),2)
+data_agg2$scaled_ansc_biomass=scaleTR(data_agg2$ansc_biomass)
+data_agg2$scaled_ansc_biomass[is.na(data_agg2$scaled_ansc_biomass)] <- 0.0001
+
+#3----
+data_agg3=subset(data_agg,Seascapenr==3)
+data_agg3$ansc_biomass= 2*nthroot(data_agg3$biomass_kg+(3/8),2)
+data_agg3$scaled_ansc_biomass=scaleTR(data_agg3$ansc_biomass)
+data_agg3$scaled_ansc_biomass[is.na(data_agg3$scaled_ansc_biomass)] <- 0.0001
+
+#4----
+data_agg4=subset(data_agg,Seascapenr==4)
+data_agg4$ansc_biomass= 2*nthroot(data_agg4$biomass_kg+(3/8),2)
+data_agg4$scaled_ansc_biomass=scaleTR(data_agg4$ansc_biomass)
+data_agg4$scaled_ansc_biomass[is.na(data_agg4$scaled_ansc_biomass)] <- 0.0001
+
+#5----
+data_agg5=subset(data_agg,Seascapenr==5)
+data_agg5$ansc_biomass= 2*nthroot(data_agg5$biomass_kg+(3/8),2)
+data_agg5$scaled_ansc_biomass=scaleTR(data_agg5$ansc_biomass)
+data_agg5$scaled_ansc_biomass[is.na(data_agg5$scaled_ansc_biomass)] <- 0.0001
+
+
+#6----
+data_agg6=subset(data_agg,Seascapenr==6)
+data_agg6$ansc_biomass= 2*nthroot(data_agg6$biomass_kg+(3/8),2)
+data_agg6$scaled_ansc_biomass=scaleTR(data_agg6$ansc_biomass)
+data_agg6$scaled_ansc_biomass[is.na(data_agg6$scaled_ansc_biomass)] <- 0.0001
+
+#7----
+data_agg7=subset(data_agg,Seascapenr==7)
+data_agg7$ansc_biomass= 2*nthroot(data_agg7$biomass_kg+(3/8),2)
+data_agg7$scaled_ansc_biomass=scaleTR(data_agg7$ansc_biomass)
+data_agg7$scaled_ansc_biomass[is.na(data_agg7$scaled_ansc_biomass)] <- 0.0001
+
+#8----
+data_agg8=subset(data_agg,Seascapenr==8)
+data_agg8$ansc_biomass= 2*nthroot(data_agg8$biomass_kg+(3/8),2)
+data_agg8$scaled_ansc_biomass=scaleTR(data_agg8$ansc_biomass)
+data_agg8$scaled_ansc_biomass[is.na(data_agg8$scaled_ansc_biomass)] <- 0.0001
+
+#9----
+data_agg9=subset(data_agg,Seascapenr==9)
+data_agg9$ansc_biomass= 2*nthroot(data_agg9$biomass_kg+(3/8),2)
+data_agg9$scaled_ansc_biomass=scaleTR(data_agg9$ansc_biomass)
+data_agg9$scaled_ansc_biomass[is.na(data_agg9$scaled_ansc_biomass)] <- 0.0001
+
+#10----
+data_agg10=subset(data_agg,Seascapenr==10)
+data_agg10$ansc_biomass= 2*nthroot(data_agg10$biomass_kg+(3/8),2)
+data_agg10$scaled_ansc_biomass=scaleTR(data_agg10$ansc_biomass)
+data_agg10$scaled_ansc_biomass[is.na(data_agg10$scaled_ansc_biomass)] <- 0.0001
+
+#rbind----
+data_agg_ansc=rbind(data_agg1,data_agg2,data_agg3,data_agg4,data_agg5,data_agg6,data_agg7,data_agg8,data_agg9,data_agg10)
+
 ####################################################
 #GAM model with separate smoother per seascape ----
 ###################################################
@@ -2584,7 +2553,7 @@ data_agg_ansc = start_event(data_agg_ansc, column="Year",event="Seascapenr") #Se
 
 mod=bam(scaled_ansc_biomass~Seascapenr+s(Year, by=Seascapenr),data=data_agg_ansc,method="REML",family=betar)
 
-sim_dat=as.data.frame(smooth_samples(mod,n=100,new_data=newdat,n_vals=43))
+sim_dat=as.data.frame(smooth_samples(mod,n=1000,new_data=newdat,n_vals=43))
 
 newd <- expand.grid(Year = seq(1977, 2019, length = 43), Seascapenr = c(1,2,3,4,5,6,7,8,9,10))
 pred <- predict(mod, newd, se.fit = TRUE)
@@ -2622,8 +2591,8 @@ S2=pred[which(pred$Seascapenr==2),]
 
 #subset data for seascape 1 and 2
 sim_dat_S1=subset(sim_dat,Seascapenr==1)
-sim_dat_S1$uprS=rep(S1$uprS,100)#+2.8,100)
-sim_dat_S1$lwrS=rep(S1$lwrS,100)#+2.8,100)
+sim_dat_S1$uprS=rep(S1$uprS,1000)#+2.8,100)
+sim_dat_S1$lwrS=rep(S1$lwrS,1000)#+2.8,100)
 sim_dat_S2=subset(sim_dat,Seascapenr==2)
 
 #GGPLOTS---
@@ -2631,7 +2600,7 @@ sim_dat_S2=subset(sim_dat,Seascapenr==2)
 s1_plot=ggplot(sim_dat_S1, aes(x = .x1, y = value, group=draw))+
   theme_classic()+
   #geom_ribbon(aes(ymin=lwrS,ymax=uprS),alpha=0.005,fill="blue")+
-  geom_line(alpha=0.1)+
+  geom_line(alpha=0.025)+
   ggtitle(sprintf("Posterior simulations seascape %s",sim_dat_S1$Seascapenr[1]))+
   labs(x = "Year", y = 'Fish biomass trend')+
   #scale_x_continuous(breaks = round(seq(min(combi_data2$lag), max(combi_data2$lag), by = 1),1))+
@@ -2646,7 +2615,7 @@ ggsave(s1_plot,file = paste(path,sprintf("images/simulated_trends1.png"),sep="")
 #sim2
 s2_plot=ggplot(sim_dat_S2, aes(x = .x1, y = value, group=draw))+
   theme_classic()+
-  geom_line(alpha=0.1)+
+  geom_line(alpha=0.025)+
   ggtitle(sprintf("Posterior simulations seascape %s",sim_dat_S2$Seascapenr[1]))+
   labs(x = "Year", y = 'Fish biomass trend')+
   #scale_x_continuous(breaks = round(seq(min(combi_data2$lag), max(combi_data2$lag), by = 1),1))+
