@@ -3,7 +3,7 @@ library(windowscanr)
 library(rollRegres)
 library(NlinTS)
 ###############################################
-# Time lagged DCCA_cc coefficient calculation #
+# Time lagged cc coefficient calculation #
 ###############################################
 
 ## data_1
@@ -11,6 +11,7 @@ x= c(-1.042061,-0.669056,-0.685977,-0.067925,0.808380,1.385235,1.455245,0.540762
 ## data_2
 y= c(-2.368030,-2.607095,-1.277660,0.301499,1.346982,1.885968,1.765950,1.242890,-0.464786,0.186658,-0.036450,-0.396513,-0.157115,-0.012962,0.378752,-0.151658,0.774253,0.646541,0.311877,-0.694177,-0.412918,-0.338630,0.276635)
 ## window size = 6
+
 
 
 dat=nlin_causality.test(x,y,lag=1,LayersUniv=c(2,2),LayersBiv=c(4,4),500,TRUE)
@@ -57,9 +58,10 @@ L_AXHA=function(x,y,L,lags){
     FqXX=mean(store_fqXX)
     FqYY=mean(store_fqYY)
     
-    FqXX*FqYY
-    sqrt(FqXX*FqYY)
-    pqLAXHA=FqXY/sqrt(FqXX*FqYY)
+    #FqXX*FqYY
+    #sqrt(FqXX*FqYY)
+    pqLAXHA=FqXY/sqrt(FqXX*FqYY) 
+    #print(pqLAXHA)
     AXHA_list=as.numeric(append(AXHA_list,pqLAXHA))
   }
   LAXHA=as.data.frame(AXHA_list)
@@ -89,15 +91,14 @@ q_L_AXHA=function(x,y,L,q,lags){
   for (tau in lag_list){  
     for (i in 1:length(xx)){
       if (i + L + tau < length(xx)){
-        #dat_x=data[i:(i+L),]
-        #dat_y=data[(i+tau):(i+L+tau),]
         
         #equation 2
         XY=(xx[i]-xx[i+L])*(yy[i+tau]-yy[i+tau+L])
         
         #equation 3
         fqXY=sign(XY)*(abs(XY)^(q/2))
-          
+        
+        
         fqXX = (xx[i]-xx[i+L])^q
         fqYY = (yy[i+tau]-yy[i+L+tau])^q
         
@@ -107,11 +108,13 @@ q_L_AXHA=function(x,y,L,q,lags){
         }
     }
     FqXY=mean(store_fqXY)
+    #print(FqXY)
     FqXX=mean(store_fqXX)
+    #print(FqXX)
     FqYY=mean(store_fqYY)
-    
-    FqXX*FqYY
-    sqrt(FqXX*FqYY)
+    #print(FqYY)
+    #FqXX*FqYY
+    #sqrt(FqXX*FqYY)
     pqLAXHA=FqXY/sqrt(FqXX*FqYY)
     AXHA_list=as.numeric(append(AXHA_list,pqLAXHA))
   }
@@ -121,7 +124,23 @@ q_L_AXHA=function(x,y,L,q,lags){
   return(pqLAXHA)
 }
 
-df=q_L_AXHA(x=x,y=y,L=1,q=2,lags=c(0,1,2,3,4,5,6,7,8,9,10))
+df=q_L_AXHA(x=x,y=y,L=1,lags=c(0,1,2,3,4,5,6,7,8,9,10),q=2)
 barplot(df$corr,xlab="lag",ylab="correlation")
 
 df=L_AXHA(x=x,y=y,L=1,lags=c(0,1,2,3,4,5,6,7,8,9,10))
+
+
+a<-0.9
+N<-1024
+tsx<-MFsim(N,a)
+scale=10:100
+q<--10:10
+m<-1
+b<-MFDFA(tsx, scale, m, q)
+dev.new()
+par(mai=rep(1, 4))
+plot(q, b$Hq, col=1, axes= FALSE, ylab=expression('h'[q]), pch=16, cex.lab=1.8,
+     cex.axis=1.8, main="q-order Hurst exponent", ylim=c(min(b$Hq),max(b$Hq)))
+grid(col="midnightblue")
+axis(1)
+axis(2)
