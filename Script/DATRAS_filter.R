@@ -203,7 +203,7 @@ ssc_map=readOGR("C:/Users/mrademaker/Documents/Research projects/STCNWS/Seascape
 ssc_map_wgs84 <- spTransform(ssc_map, CRS("+proj=longlat +datum=WGS84")) 
 
 #filter and adjust data_sets----
-for (i in 1:nrow(species_info)){
+for (i in 3:3){#1:nrow(species_info)){
   file_name=paste(path,"Data/",species_info$file_name[i],sep="")
   print(file_name)
   #Read in data
@@ -921,7 +921,7 @@ for (k in 1:1){# in c(1,2,3,4,5,7,12,13,14)){
       lagged_MI=rbind(lagged_MI,df)
      }
   }
-  write.csv(lagged_MI,paste(path,sprintf("Seascapes/Q1/%s/GAM/CCF/mutinf_lag.csv",species_info$file_name[k]),sep=""))
+  write.csv(lagged_MI,paste(path,sprintf("Seascapes/Q1/%s/GAM/MI/mutinf_lag.csv",species_info$file_name[k]),sep=""))
 }
 
 #   ####################################################
@@ -1067,11 +1067,17 @@ combi=c(1,2,3,4,5,6,7,8,9,10)
 combi_width=as.data.frame(combinations(n=10,r=2,v=combi))
 
 
+cool = rainbow(50, start=rgb2hsv(col2rgb('cyan'))[1], end=rgb2hsv(col2rgb('blue'))[1])
+warm = rainbow(50, start=rgb2hsv(col2rgb('red'))[1], end=rgb2hsv(col2rgb('yellow'))[1])
+cols = c(rev(cool), rev(warm))
+mypalette <- colorRampPalette(cols)(255)
+
 for (j in c(1,2,3,4,5,7,12,13,14)){
-   data=read.csv(paste(path,sprintf("Seascapes/Q1/%s/GAM/CCF/mutinf_lag.csv",species_info$file_name[j]),sep=""))
+   data=read.csv(paste(path,sprintf("Seascapes/Q1/%s/GAM/MI/mutinf_lag.csv",species_info$file_name[j]),sep=""))
    #names(data)[1:5]=c("ID","Acf","lag","Seascapes","sim")
    print(species_info$file_name[j])
-   cols=rev("RdYlBu")
+   #cols=rev("RdYlBu")
+   
     #cols <- brewer.pal(11, 'Spectral')
     #cols
     #combi_data=aggregate(Acf~lag+Seascapes,data=data,FUN=mean)
@@ -1096,14 +1102,14 @@ for (j in c(1,2,3,4,5,7,12,13,14)){
 # 
 #    pal=rev(brewer.pal(n=5,name="RdBu"))
 #    pal
-#    p=ggplot(data = data, aes(x=Seascapes, y=lag, fill = bcmi))+
-#       geom_tile(color = "white")+
-#       scale_fill_gradientn(colors=pal,limits=c(-0.1,1))+#(colours=pal,limits=c(-0.1,1)) + #rainbow(21)
-#       theme_minimal()+
-#       theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1,size=9))+
-#       theme(axis.text.y = element_text(angle = 45, vjust = 1, hjust = 1,size=9))+
-#       scale_y_continuous(breaks = round(seq(min(combi_data2$lag), max(combi_data2$lag), by = 1),1))
-#     p
+   p=ggplot(data = data, aes(x=Seascapes, y=lag, fill = bcmi))+
+      geom_tile(color = "white")+
+      scale_fill_gradientn(colors=mypalette,limits=c(-0.1,1))+#(colours=pal,limits=c(-0.1,1)) + #rainbow(21)
+      theme_minimal()+
+      theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1,size=9))+
+      theme(axis.text.y = element_text(angle = 45, vjust = 1, hjust = 1,size=9))+
+      scale_y_continuous(breaks = round(seq(min(combi_data2$lag), max(combi_data2$lag), by = 1),1))
+    p
    #  #p
    #  
    #   # q=ggplot(data = combi_data, aes(x=Seascapes, y=lag))+#, fill = Accf))+
@@ -1115,46 +1121,46 @@ for (j in c(1,2,3,4,5,7,12,13,14)){
    #   #  theme(axis.text.y = element_text(angle = 45, vjust = 1, hjust = 1,size=9))+
    #   #  scale_y_continuous(breaks = round(seq(min(combi_data2$lag), max(combi_data2$lag), by = 1),1))
    #   # #q
-     # ggsave(p,file = paste(path,sprintf("Seascapes/Q1/%s/GAM/CCF/Tiled_bcmi_%s.png",species_info$file_name[j],species_info$file_name[j]),sep=""), height=2.5, width=8,dpi = 600)
+     ggsave(p,file = paste(path,sprintf("Seascapes/Q1/%s/GAM/MI/Tiled_bcmi_%s.png",species_info$file_name[j],species_info$file_name[j]),sep=""), height=2.5, width=8,dpi = 600)
     #ggsave(q,file = paste(path,sprintf("Seascapes/Q1/%s/GAM/CCF/diff1_Circled_ccf_%s.png",species_info$file_name[j],species_info$file_name[j]),sep=""), height=6, width=8,dpi = 600)
 #   
 
-   for (i in 1:nrow(combi_width)){
-    sc_combi=sprintf("%s - %s",combi_width$V1[i],combi_width$V2[i])
-
-    #subset data
-    combi_data=subset(data, Seascapes==sc_combi)
-    #combi_data=select(combi_data,-ID,sim)#drop unneccesary columns
-
-    # aggregate autocorrelation per lag (mean per lag) for subset
-    #combi_data2=do.call(data.frame, aggregate(.~lag+Seascapes,data=combi_data,function(x)c(mean=mean(x),se=std_err(x))))
-    #combi_data2$upr_conf=combi_data2$Acf.mean+(2*combi_data2$Acf.se)
-    #combi_data2$lwr_conf=combi_data2$Acf.mean-(2*combi_data2$Acf.se)
-
-    #create graph
-    autocor_plot=ggplot(combi_data, aes(x = lag, y = bcmi))+
-                 theme_classic()+
-                 geom_bar(stat="identity",col="black",fill="gray",alpha=0.5,width=0.5)+#col="black",fill="gray",width=0.5)+
-                 #geom_errorbar(aes(ymin=lwr_conf,ymax=upr_conf),width=0.2)+
-
-                 #geom_hline(yintercept=0.3, linetype="dashed", color = "red",size=1,alpha=0.5)+
-                 #geom_hline(yintercept=-0.3, linetype="dashed", color = "red",size=1,alpha=0.5)+
-                 geom_hline(yintercept=0, color = "black",size=0.5)+
-
-
-                 ggtitle(sprintf("%s Mutual information S%s & S%s",species_info$Scientific.name[j],combi_width$V1[i],combi_width$V2[i]))+
-                 labs(x = "Lag (Year)", y = 'BCMI')+
-                 scale_x_continuous(breaks = round(seq(min(combi_data$lag), max(combi_data$lag), by = 1),1))+
-                 #scale_y_continuous(breaks = round(seq(min(combi_data$cor), max(combi_data$cor), by = 0.05),1))+
-
-                  theme(plot.title = element_text(hjust = 0.25,size=12,face="bold"))+
-                  theme(axis.text.x = element_text(face="bold",size=9))+
-                  theme(axis.text.y = element_text(face="bold",size=9))+
-                  theme(axis.title.x = element_text(face="bold",size=10,margin = margin(t = 10, r = 0, b = 0, l = 0)))+
-                  theme(axis.title.y = element_text(face="bold",size=10,margin = margin(t = 0, r = 10, b = 0, l = 0)))+
-                  ylim(-0.1,1)
-    #autocor_plot
-    ggsave(autocor_plot,file = paste(path,sprintf("Seascapes/Q1/%s/GAM/CCF/CCF_smooth_%s_%s_ANSC.png",species_info$file_name[j],combi_width$V1[i],combi_width$V2[i]),sep=""), height=3.5, width=4.5,dpi = 600)
+   # for (i in 1:nrow(combi_width)){
+   #  sc_combi=sprintf("%s - %s",combi_width$V1[i],combi_width$V2[i])
+   # 
+   #  #subset data
+   #  combi_data=subset(data, Seascapes==sc_combi)
+   #  #combi_data=select(combi_data,-ID,sim)#drop unneccesary columns
+   # 
+   #  # aggregate autocorrelation per lag (mean per lag) for subset
+   #  #combi_data2=do.call(data.frame, aggregate(.~lag+Seascapes,data=combi_data,function(x)c(mean=mean(x),se=std_err(x))))
+   #  #combi_data2$upr_conf=combi_data2$Acf.mean+(2*combi_data2$Acf.se)
+   #  #combi_data2$lwr_conf=combi_data2$Acf.mean-(2*combi_data2$Acf.se)
+   # 
+   #  #create graph
+   #  autocor_plot=ggplot(combi_data, aes(x = lag, y = bcmi))+
+   #               theme_classic()+
+   #               geom_bar(stat="identity",col="black",fill="gray",alpha=0.5,width=0.5)+#col="black",fill="gray",width=0.5)+
+   #               #geom_errorbar(aes(ymin=lwr_conf,ymax=upr_conf),width=0.2)+
+   # 
+   #               #geom_hline(yintercept=0.3, linetype="dashed", color = "red",size=1,alpha=0.5)+
+   #               #geom_hline(yintercept=-0.3, linetype="dashed", color = "red",size=1,alpha=0.5)+
+   #               geom_hline(yintercept=0, color = "black",size=0.5)+
+   # 
+   # 
+   #               ggtitle(sprintf("%s Mutual information S%s & S%s",species_info$Scientific.name[j],combi_width$V1[i],combi_width$V2[i]))+
+   #               labs(x = "Lag (Year)", y = 'BCMI')+
+   #               scale_x_continuous(breaks = round(seq(min(combi_data$lag), max(combi_data$lag), by = 1),1))+
+   #               #scale_y_continuous(breaks = round(seq(min(combi_data$cor), max(combi_data$cor), by = 0.05),1))+
+   # 
+   #                theme(plot.title = element_text(hjust = 0.25,size=12,face="bold"))+
+   #                theme(axis.text.x = element_text(face="bold",size=9))+
+   #                theme(axis.text.y = element_text(face="bold",size=9))+
+   #                theme(axis.title.x = element_text(face="bold",size=10,margin = margin(t = 10, r = 0, b = 0, l = 0)))+
+   #                theme(axis.title.y = element_text(face="bold",size=10,margin = margin(t = 0, r = 10, b = 0, l = 0)))+
+   #                ylim(-0.1,1)
+   #  #autocor_plot
+   #  ggsave(autocor_plot,file = paste(path,sprintf("Seascapes/Q1/%s/GAM/CCF/CCF_smooth_%s_%s_ANSC.png",species_info$file_name[j],combi_width$V1[i],combi_width$V2[i]),sep=""), height=3.5, width=4.5,dpi = 600)
 
   }
 }

@@ -2,7 +2,7 @@ N	Species	Scientific name	LW-conversion	Lmin (cm)	Lmax (cm)	a	b
 1	Dab	Limanda limanda	0.0068*(L)^3.14	2	40	0.0068	3.14
 2	Whiting 	Merlangius merlangus	0.0063*(L)^3.06	2	91.5	0.0063	3.06
 3	Herring	Clupea harengus	0.0060*(L)^3.08	2	45	0.006	3.08
-4	Cod	Gadus Morhua	0.0071*(L)^3.08	2	200	0.0071	3.08
+4	Cod	Gadus morhua	0.0071*(L)^3.08	2	200	0.0071	3.08
 5	Sprat	Sprattus sprattus	0.0056*(L)^3.09	2	16	0.0056	3.09
 6	Greater sandeel	Hyperoplus lanceolatus	0.0051*(L)^2.79	2	40	0.0051	2.79
 7	Common dragonet	Callionymus lyra	0.0214*(L)^2.59	2	30.5	0.0214	2.59
