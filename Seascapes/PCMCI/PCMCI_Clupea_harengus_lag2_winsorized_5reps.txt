@@ -1,0 +1,171 @@
+## Lag 2 Winsorized 95%
+Clupea_harengus
+
+Run 1
+## Significant links at alpha = 0.01:
+
+    Variable S1 has 0 link(s):
+
+    Variable S2 has 2 link(s):
+        (S4 -2): pval = 0.00000 | qval = 0.00000 | val = 0.605 | conf = (0.187, 0.828)
+        (S3 -2): pval = 0.00000 | qval = 0.00000 | val = 0.566 | conf = (0.359, 0.736)
+
+    Variable S3 has 0 link(s):
+
+    Variable S4 has 0 link(s):
+
+    Variable S5 has 0 link(s):
+
+    Variable S6 has 1 link(s):
+        (S5 -2): pval = 0.00000 | qval = 0.00000 | val = 0.551 | conf = (0.259, 0.737)
+
+    Variable S7 has 1 link(s):
+        (S4 0): pval = 0.00400 | qval = 0.00400 | val = 0.489 | conf = (0.130, 0.698)
+
+    Variable S8 has 0 link(s):
+
+    Variable S9 has 1 link(s):
+        (S5 -1): pval = 0.00000 | qval = 0.00000 | val = 0.559 | conf = (0.315, 0.750)
+
+    Variable S10 has 0 link(s):
+Run 2
+## Significant links at alpha = 0.01:
+
+    Variable S1 has 0 link(s):
+
+    Variable S2 has 1 link(s):
+        (S4 -2): pval = 0.00000 | qval = 0.00000 | val = 0.605 | conf = (0.317, 0.854)
+
+    Variable S3 has 0 link(s):
+
+    Variable S4 has 0 link(s):
+
+    Variable S5 has 1 link(s):
+        (S9 -1): pval = 0.00000 | qval = 0.00000 | val = 0.479 | conf = (0.114, 0.779)
+
+    Variable S6 has 1 link(s):
+        (S5 -2): pval = 0.00000 | qval = 0.00000 | val = 0.551 | conf = (0.280, 0.830)
+
+    Variable S7 has 0 link(s):
+
+    Variable S8 has 1 link(s):
+        (S2 0): pval = 0.01000 | qval = 0.01000 | val = 0.383 | conf = (0.012, 0.629)
+
+    Variable S9 has 1 link(s):
+        (S5 -1): pval = 0.00000 | qval = 0.00000 | val = 0.559 | conf = (0.408, 0.773)
+
+    Variable S10 has 0 link(s):
+Run 3
+## Significant links at alpha = 0.01:
+
+    Variable S1 has 0 link(s):
+
+    Variable S2 has 1 link(s):
+        (S8 -1): pval = 0.00000 | qval = 0.00000 | val = 0.471 | conf = (0.131, 0.778)
+
+    Variable S3 has 0 link(s):
+
+    Variable S4 has 1 link(s):
+        (S7 0): pval = 0.00600 | qval = 0.00600 | val = 0.489 | conf = (0.145, 0.680)
+
+    Variable S5 has 1 link(s):
+        (S9 -1): pval = 0.00000 | qval = 0.00000 | val = 0.424 | conf = (0.176, 0.714)
+
+    Variable S6 has 1 link(s):
+        (S5 -2): pval = 0.00000 | qval = 0.00000 | val = 0.551 | conf = (0.270, 0.765)
+
+    Variable S7 has 1 link(s):
+        (S4 0): pval = 0.00800 | qval = 0.00800 | val = 0.489 | conf = (0.040, 0.723)
+
+    Variable S8 has 0 link(s):
+
+    Variable S9 has 1 link(s):
+        (S5 -1): pval = 0.00000 | qval = 0.00000 | val = 0.540 | conf = (0.306, 0.772)
+
+    Variable S10 has 0 link(s):
+Run 4
+## Significant links at alpha = 0.01:
+
+    Variable S1 has 0 link(s):
+
+    Variable S2 has 1 link(s):
+        (S4 -2): pval = 0.00000 | qval = 0.00000 | val = 0.605 | conf = (0.252, 0.808)
+
+    Variable S3 has 0 link(s):
+
+    Variable S4 has 1 link(s):
+        (S10 -1): pval = 0.00000 | qval = 0.00000 | val = -0.305 | conf = (-0.474, -0.115)
+
+    Variable S5 has 0 link(s):
+
+    Variable S6 has 1 link(s):
+        (S5 -2): pval = 0.00000 | qval = 0.00000 | val = 0.551 | conf = (0.256, 0.768)
+
+    Variable S7 has 0 link(s):
+
+    Variable S8 has 0 link(s):
+
+    Variable S9 has 1 link(s):
+        (S5 -1): pval = 0.00000 | qval = 0.00000 | val = 0.540 | conf = (0.278, 0.728)
+
+    Variable S10 has 0 link(s):
+Run 5
+## Significant links at alpha = 0.01:
+
+    Variable S1 has 0 link(s):
+
+    Variable S2 has 3 link(s):
+        (S4 -2): pval = 0.00000 | qval = 0.00000 | val = 0.605 | conf = (0.336, 0.825)
+        (S3 -2): pval = 0.00000 | qval = 0.00000 | val = 0.566 | conf = (0.361, 0.745)
+        (S8 0): pval = 0.00800 | qval = 0.00800 | val = 0.383 | conf = (0.063, 0.686)
+
+    Variable S3 has 0 link(s):
+
+    Variable S4 has 0 link(s):
+
+    Variable S5 has 1 link(s):
+        (S9 -1): pval = 0.00000 | qval = 0.00000 | val = 0.479 | conf = (0.158, 0.742)
+
+    Variable S6 has 1 link(s):
+        (S5 -2): pval = 0.00000 | qval = 0.00000 | val = 0.551 | conf = (0.229, 0.768)
+
+    Variable S7 has 0 link(s):
+
+    Variable S8 has 0 link(s):
+
+    Variable S9 has 1 link(s):
+        (S5 -1): pval = 0.00000 | qval = 0.00000 | val = 0.559 | conf = (0.293, 0.764)
+
+    Variable S10 has 0 link(s):
+
+###########################################
+#### Consistent Links (Min. 4/5 runs) #####
+###########################################
+
+    Variable S1 has 0 link(s):
+
+    Variable S2 has 1 link(s):
+        (S4 -2): pval = 0.00000 | qval = 0.00000 | val = 0.605 | conf = (0.336, 0.825)
+
+    Variable S3 has 0 link(s):
+
+    Variable S4 has 0 link(s):
+
+    Variable S5 has 1 link(s):
+        (S9 -1): pval = 0.00000 | qval = 0.00000 | val = 0.479 | conf = (0.158, 0.742)
+
+    Variable S6 has 0 link(s):
+
+    Variable S7 has 0 link(s):
+
+    Variable S8 has 0 link(s):
+
+    Variable S9 has 1 link(s):
+        (S5 -1): pval = 0.00000 | qval = 0.00000 | val = 0.559 | conf = (0.293, 0.764)
+
+    Variable S10 has 0 link(s):
+
+
+
+  
+

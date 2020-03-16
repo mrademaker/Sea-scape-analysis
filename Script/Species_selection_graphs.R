@@ -197,70 +197,11 @@ path=("C:/Users/mrademaker/Documents/Research projects/STCNWS/DATRAS/cpue_length
 species_info=read.table(paste(path,"Data/spec_info.txt",sep=""),sep="\t",header=TRUE)
 species_info$file_name =gsub(" ","_",species_info$Scientific.name)
 
-#open seascapes map and convert to wgs84 long,lat----
-ssc_map=readOGR("C:/Users/mrademaker/Documents/Research projects/STCNWS/Seascapes/To_Mark_ArcGIS.",layer="seascapes")
-ssc_map_wgs84 <- spTransform(ssc_map, CRS("+proj=longlat +datum=WGS84")) 
-
-#filter and adjust data_sets----
-for (i in 3:3){#1:nrow(species_info)){
-  file_name=paste(path,"Data/",species_info$file_name[i],sep="")
-  print(file_name)
-  #Read in data
-  data=read.csv(paste(file_name,".csv",sep=""))
-  
-  #Subset with same fishing gear
-  data=subset(data, Gear == 'GOV')
-  
-  #Subset only during day
-  #data=subset(data, DayNight == "D")
-  
-  #Bin depth in 20m classes
-  #print(max(data$Depth))
-  #data$Depth=abs(data$Depth)
-  #data$Depth_bin=factor(cut(data$Depth,breaks=c(0,50,100,150,200,250,300,350,400)))
-  # 
-  #Length in cm
-  data$LngtClass_cm=data$LngtClass/10
-  
-  #Add info on weight conversion formula
-  data$WeightConv=species_info$LW.conversion[i]
-  
-  #Calculate weight for corresponding Length Class
-  data$Weight=species_info$a[i]*(data$LngtClass_cm^species_info$b[i])
-  
-  # Multiply weight by CPUE number per hour for indication of total weight(biomass) per length class
-  data$Total_wgt=data$CPUE_number_per_hour*data$Weight
-  
-  #Determine location (Seascape)
-  coordinates(data)= ~ ShootLong + ShootLat
-  proj4string(data) <- proj4string(ssc_map_wgs84)
-  data_in=as.data.frame(over(data, ssc_map_wgs84))
-  data_ssc=as.data.frame(cbind(as.data.frame(data),data_in))
-  
-  # # # check on map
-  # # shapefile_df <- fortify(ssc_map_wgs84)
-  # #
-  # # map <- ggplot() +
-  # #   geom_path(data = shapefile_df,
-  #             aes(x = long, y = lat, group = group),
-  #             color = 'black', size = 1)+
-  #   ggtitle("Seascapes plot and NS-IBTS survey data (Limanda limanda)")
-  # print(map)
-  #
-  # p2 = map+geom_point(data=as.data.frame(data),aes(x=ShootLong,y=ShootLat),color="black",fill="red",size=1,shape=21)
-  # print(p2)
-  #
-  #save filtered file
-  file_name=sprintf("C:/Users/mrademaker/Documents/Research projects/STCNWS/DATRAS/cpue_length_hour/Data/Filtered_%s.csv",species_info$file_name[i])
-  write.csv(data_ssc,file_name)
-  #
-}
-
 
 ################################################################################
-####GAM Anscombe transformed (sqrt(x+3/8)) and scaled by max (BETA errror)   ###-----
+####GAM   ###-----
 ################################################################################
-for (j in c(2:15)){
+for (j in c(1:16)){
   print(j)
   data=read.csv(paste(path,sprintf("Data/Filtered_%s.csv",species_info$file_name[j]),sep=""))
   names(data)[names(data) == "id"] <- "Seascapenr"
@@ -277,11 +218,11 @@ for (j in c(2:15)){
   #print(nrow(positive_data_agg))
   
   # # # # #set outlier weight limit (99th percentile)
-  #   nf_p=quantile(data_agg$Total_wgt,0.95)
+  #   nf_p=quantile(data_agg$Total_wgt,0.99)
   #   if (nf_p > 0){
-  #    #subset of data excluding outlier weights
   #     data_agg=subset(data_agg,Total_wgt < nf_p[[1]])
-  #   }
+      #subset of data excluding outlier weights
+      }
   # # 
   
   # convert weights from grams to kg
@@ -381,7 +322,7 @@ for (j in c(2:15)){
      geom_point(aes(x=Year,y=biomass_kg),alpha=0.2,colour="blue",data=data_agg1)+
      geom_line(aes(y=fit),col="black",size=1)+
      ggtitle("S1")+
-     labs(x="Year",y="Fish biomass trend")
+     labs(x="Year",y="Wet biomass(kg) per haul")
    #Add species image
    s1plot=s1plot+annotation_custom(g,xmin = min(data_agg1$Year), xmax = min(data_agg1$Year)+9, ymin = max(data_agg1$biomass_kg)-0.15*(max(data_agg1$biomass_kg)), ymax = max(data_agg1$biomass_kg))
   # 
@@ -391,7 +332,7 @@ for (j in c(2:15)){
     geom_point(aes(x=Year,y=biomass_kg),alpha=0.2,colour="blue",data=data_agg2)+
     geom_line(aes(y=fit),col="black",size=1)+
     ggtitle("S2")+
-    labs(x="Year",y="ANSC fish biomass trend")
+    labs(x="Year",y="Wet biomass(kg) per haul")
   #Add species image
   #s2plot=s2plot+annotation_custom(g,xmin = min(data_agg2$Year), xmax = min(data_agg2$Year)+8, ymin = max(data_agg2$biomass_kg)-0.15*(max(data_agg2$biomass_kg)), ymax = max(data_agg2$biomass_kg))
 
@@ -402,7 +343,7 @@ for (j in c(2:15)){
     geom_point(aes(x=Year,y=biomass_kg),alpha=0.2,colour="blue",data=data_agg3)+
     geom_line(aes(y=fit),col="black",size=1)+
     ggtitle("S3")+
-    labs(x="Year",y="ANSC fish biomass trend")
+    labs(x="Year",y="Wet biomass(kg) per haul")
   #Add species image
   #s3plot=s3plot+annotation_custom(g,xmin = min(data_agg3$Year), xmax = min(data_agg3$Year)+8, ymin = max(data_agg3$biomass_kg)-0.15*(max(data_agg3$biomass_kg)), ymax = max(data_agg3$biomass_kg))
 
@@ -412,7 +353,7 @@ for (j in c(2:15)){
     geom_point(aes(x=Year,y=biomass_kg),alpha=0.2,colour="blue",data=data_agg4)+
     geom_line(aes(y=fit),col="black",size=1)+
     ggtitle("S4")+
-    labs(x="Year",y="ANSC fish biomass trend")
+    labs(x="Year",y="Wet biomass(kg) per haul")
   #Add species image
   #s4plot=s4plot+annotation_custom(g,xmin = min(data_agg4$Year), xmax = min(data_agg4$Year)+8, ymin = max(data_agg4$biomass_kg)-0.15*(max(data_agg4$biomass_kg)), ymax = max(data_agg4$biomass_kg))
 
@@ -423,7 +364,7 @@ for (j in c(2:15)){
     geom_point(aes(x=Year,y=biomass_kg),alpha=0.2,colour="blue",data=data_agg5)+
     geom_line(aes(y=fit),col="black",size=1)+
     ggtitle("S5")+
-    labs(x="Year",y="ANSC fish biomass trend")
+    labs(x="Year",y="Wet biomass(kg) per haul")
   #Add species image
   #s5plot=s5plot+annotation_custom(g,xmin = min(data_agg5$Year), xmax = min(data_agg5$Year)+8, ymin = max(data_agg5$biomass_kg)-0.15*(max(data_agg5$biomass_kg)), ymax = max(data_agg5$biomass_kg))
 
@@ -434,7 +375,7 @@ for (j in c(2:15)){
     geom_point(aes(x=Year,y=biomass_kg),alpha=0.2,colour="blue",data=data_agg6)+
     geom_line(aes(y=fit),col="black",size=1)+
     ggtitle("S6")+
-    labs(x="Year",y="ANSC fish biomass trend")
+    labs(x="Year",y="Wet biomass(kg) per haul")
   #Add species image
   #s6plot=s6plot+annotation_custom(g,xmin = min(data_agg6$Year), xmax = min(data_agg6$Year)+8, ymin = max(data_agg6$biomass_kg)-0.15*(max(data_agg6$biomass_kg)), ymax = max(data_agg6$biomass_kg))
 
@@ -445,7 +386,7 @@ for (j in c(2:15)){
     geom_point(aes(x=Year,y=biomass_kg),alpha=0.2,colour="blue",data=data_agg7)+
     geom_line(aes(y=fit),col="black",size=1)+
     ggtitle("S7")+
-    labs(x="Year",y="ANSC fish biomass trend")
+    labs(x="Year",y="Wet biomass(kg) per haul")
   #Add species image
   #s7plot=s7plot+annotation_custom(g,xmin = min(data_agg7$Year), xmax = min(data_agg7$Year)+8, ymin = max(data_agg7$biomass_kg)-0.15*(max(data_agg7$biomass_kg)), ymax = max(data_agg7$biomass_kg))
 
@@ -455,7 +396,7 @@ for (j in c(2:15)){
     geom_point(aes(x=Year,y=biomass_kg),alpha=0.2,colour="blue",data=data_agg8)+
     geom_line(aes(y=fit),col="black",size=1)+
     ggtitle("S8")+
-    labs(x="Year",y="ANSC fish biomass trend")
+    labs(x="Year",y="Wet biomass(kg) per haul")
   #Add species image
   #s8plot=s8plot+annotation_custom(g,xmin = min(data_agg8$Year), xmax = min(data_agg8$Year)+8, ymin = max(data_agg8$biomass_kg)-0.15*(max(data_agg8$biomass_kg)), ymax = max(data_agg8$biomass_kg))
 
@@ -466,7 +407,7 @@ for (j in c(2:15)){
     geom_point(aes(x=Year,y=biomass_kg),alpha=0.2,colour="blue",data=data_agg9)+
     geom_line(aes(y=fit),col="black",size=1)+
     ggtitle("S9")+
-    labs(x="Year",y="ANSC fish biomass trend")
+    labs(x="Year",y="Wet biomass(kg) per haul")
   #Add species image
   #s9plot=s9plot+annotation_custom(g,xmin = min(data_agg9$Year), xmax = min(data_agg9$Year)+8, ymin = max(data_agg9$biomass_kg)-0.15*(max(data_agg9$biomass_kg)), ymax = max(data_agg9$biomass_kg))
 
@@ -476,11 +417,11 @@ for (j in c(2:15)){
     geom_point(aes(x=Year,y=biomass_kg),alpha=0.2,colour="blue",data=data_agg10)+
     geom_line(aes(y=fit),col="black",size=1)+
     ggtitle("S10")+
-    labs(x="Year",y="ANSC fish biomass trend")
+    labs(x="Year",y="Wet biomass(kg) per haul")
   #Add species image
   #s10plot=s10plot+annotation_custom(g,xmin = min(data_agg10$Year), xmax = min(data_agg10$Year)+8, ymin = max(data_agg10$biomass_kg)-0.15*(max(data_agg10$biomass_kg)), ymax = max(data_agg10$biomass_kg))
 
 
   cplot=grid.arrange(s1plot,s2plot,s3plot,s4plot,s5plot,s6plot,s7plot,s8plot,s9plot,s10plot,ncol=4,nrow=3)
-  ggsave(cplot,file=paste(path,sprintf("Seascapes/Q1/%s/GAM/GAM_ANSC_data_smooths.png",species_info$file_name[j]),sep=""),height=8, width=10,dpi = 600)#
+  ggsave(cplot,file=paste(path,sprintf("Seascapes/smooths/%s_GAM_wet_biomass.png",species_info$file_name[j]),sep=""),height=8, width=10,dpi = 600)#
 }

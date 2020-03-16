@@ -1,0 +1,154 @@
+## Box-Cox Lag 2
+## Limanda_limanda
+## Run 1
+## Significant links at alpha = 0.01:
+
+    Variable S1 has 0 link(s):
+
+    Variable S2 has 0 link(s):
+
+    Variable S3 has 1 link(s):
+        (S1 -2): pval = 0.00000 | qval = 0.00000 | val = -0.542 | conf = (-0.703, -0.196)
+
+    Variable S4 has 0 link(s):
+
+    Variable S5 has 0 link(s):
+
+    Variable S6 has 0 link(s):
+
+    Variable S7 has 1 link(s):
+        (S9 -1): pval = 0.00000 | qval = 0.00000 | val = 0.586 | conf = (0.422, 0.747)
+
+    Variable S8 has 2 link(s):
+        (S9 -1): pval = 0.00000 | qval = 0.00000 | val = 0.511 | conf = (0.276, 0.685)
+        (S8 -2): pval = 0.00000 | qval = 0.00000 | val = -0.411 | conf = (-0.561, -0.073)
+
+    Variable S9 has 1 link(s):
+        (S10 0): pval = 0.00600 | qval = 0.00600 | val = 0.473 | conf = (0.162, 0.653)
+
+    Variable S10 has 1 link(s):
+        (S9 0): pval = 0.00600 | qval = 0.00600 | val = 0.473 | conf = (0.119, 0.665)
+## Limanda_limanda
+## Run 2
+## Significant links at alpha = 0.01:
+
+    Variable S1 has 1 link(s):
+        (S2 0): pval = 0.01000 | qval = 0.01000 | val = -0.339 | conf = (-0.661, 0.250)
+
+    Variable S2 has 0 link(s):
+
+    Variable S3 has 2 link(s):
+        (S1 -2): pval = 0.00000 | qval = 0.00000 | val = -0.524 | conf = (-0.650, -0.257)
+        (S10 0): pval = 0.00800 | qval = 0.00800 | val = -0.303 | conf = (-0.492, -0.060)
+
+    Variable S4 has 2 link(s):
+        (S9 0): pval = 0.00600 | qval = 0.00600 | val = 0.433 | conf = (0.103, 0.687)
+        (S10 0): pval = 0.01000 | qval = 0.01000 | val = 0.421 | conf = (0.028, 0.545)
+
+    Variable S5 has 0 link(s):
+
+    Variable S6 has 0 link(s):
+
+    Variable S7 has 0 link(s):
+
+    Variable S8 has 1 link(s):
+        (S8 -2): pval = 0.00000 | qval = 0.00000 | val = -0.411 | conf = (-0.634, -0.133)
+
+    Variable S9 has 2 link(s):
+        (S10 0): pval = 0.00000 | qval = 0.00000 | val = 0.473 | conf = (0.120, 0.662)
+        (S4 0): pval = 0.00800 | qval = 0.00800 | val = 0.433 | conf = (0.165, 0.648)
+
+    Variable S10 has 2 link(s):
+        (S9 0): pval = 0.00800 | qval = 0.00800 | val = 0.473 | conf = (0.187, 0.660)
+        (S4 0): pval = 0.00600 | qval = 0.00600 | val = 0.421 | conf = (0.039, 0.523)
+## Limanda_limanda
+## Run 3
+## Significant links at alpha = 0.01:
+
+    Variable S1 has 0 link(s):
+
+    Variable S2 has 0 link(s):
+
+    Variable S3 has 1 link(s):
+        (S1 -2): pval = 0.00000 | qval = 0.00000 | val = -0.524 | conf = (-0.680, -0.253)
+
+    Variable S4 has 1 link(s):
+        (S9 0): pval = 0.00400 | qval = 0.00400 | val = 0.436 | conf = (0.175, 0.599)
+
+    Variable S5 has 0 link(s):
+
+    Variable S6 has 0 link(s):
+
+    Variable S7 has 0 link(s):
+
+    Variable S8 has 1 link(s):
+        (S9 -1): pval = 0.00000 | qval = 0.00000 | val = 0.511 | conf = (0.364, 0.691)
+
+    Variable S9 has 2 link(s):
+        (S10 0): pval = 0.00800 | qval = 0.00800 | val = 0.473 | conf = (0.166, 0.658)
+        (S4 0): pval = 0.00600 | qval = 0.00600 | val = 0.436 | conf = (0.203, 0.563)
+
+    Variable S10 has 1 link(s):
+        (S9 0): pval = 0.00400 | qval = 0.00400 | val = 0.473 | conf = (0.124, 0.633)
+## Limanda_limanda
+## Run 4
+## Significant links at alpha = 0.01:
+
+    Variable S1 has 0 link(s):
+
+    Variable S2 has 0 link(s):
+
+    Variable S3 has 1 link(s):
+        (S1 -2): pval = 0.00000 | qval = 0.00000 | val = -0.524 | conf = (-0.688, -0.192)
+
+    Variable S4 has 1 link(s):
+        (S9 0): pval = 0.00200 | qval = 0.00200 | val = 0.436 | conf = (0.158, 0.647)
+
+    Variable S5 has 1 link(s):
+        (S4 -1): pval = 0.00000 | qval = 0.00000 | val = 0.453 | conf = (0.190, 0.642)
+
+    Variable S6 has 0 link(s):
+
+    Variable S7 has 1 link(s):
+        (S9 -1): pval = 0.00000 | qval = 0.00000 | val = 0.516 | conf = (0.358, 0.683)
+
+    Variable S8 has 1 link(s):
+        (S9 -1): pval = 0.00000 | qval = 0.00000 | val = 0.511 | conf = (0.297, 0.696)
+
+    Variable S9 has 1 link(s):
+        (S10 0): pval = 0.00800 | qval = 0.00800 | val = 0.473 | conf = (0.131, 0.679)
+
+    Variable S10 has 1 link(s):
+        (S9 0): pval = 0.00800 | qval = 0.00800 | val = 0.473 | conf = (0.224, 0.696)
+## Limanda_limanda
+## Run 5
+## Significant links at alpha = 0.01:
+
+    Variable S1 has 0 link(s):
+
+    Variable S2 has 0 link(s):
+
+    Variable S3 has 1 link(s):
+        (S1 -2): pval = 0.00000 | qval = 0.00000 | val = -0.524 | conf = (-0.698, -0.102)
+
+    Variable S4 has 1 link(s):
+        (S9 0): pval = 0.00400 | qval = 0.00400 | val = 0.462 | conf = (0.141, 0.717)
+
+    Variable S5 has 0 link(s):
+
+    Variable S6 has 0 link(s):
+
+    Variable S7 has 1 link(s):
+        (S9 -1): pval = 0.00000 | qval = 0.00000 | val = 0.516 | conf = (0.304, 0.672)
+
+    Variable S8 has 2 link(s):
+        (S9 -1): pval = 0.00000 | qval = 0.00000 | val = 0.511 | conf = (0.301, 0.700)
+        (S8 -2): pval = 0.00000 | qval = 0.00000 | val = -0.411 | conf = (-0.566, -0.136)
+
+    Variable S9 has 2 link(s):
+        (S10 0): pval = 0.00400 | qval = 0.00400 | val = 0.473 | conf = (0.247, 0.689)
+        (S4 0): pval = 0.00400 | qval = 0.00400 | val = 0.462 | conf = (0.149, 0.745)
+
+    Variable S10 has 2 link(s):
+        (S9 0): pval = 0.00600 | qval = 0.00600 | val = 0.473 | conf = (0.141, 0.638)
+        (S4 0): pval = 0.00600 | qval = 0.00600 | val = 0.435 | conf = (-0.023, 0.549)

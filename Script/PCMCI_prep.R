@@ -8,9 +8,12 @@ species_info$file_name =gsub(" ","_",species_info$Scientific.name)
 ###########################################
 #### compute temporal correlation file #### ----
 ###########################################
+#file with species info----
+species_info=read.table(paste(path,"Data/spec_info.txt",sep=""),sep="\t",header=TRUE)
+species_info$file_name =gsub(" ","_",species_info$Scientific.name)
 
 #selected species for temporal 
-for (k in c(3:3)){
+for (k in 1:nrow(species_info)){
   data=read.csv(paste(path,sprintf("Data/Filtered_%s.csv",species_info$file_name[k]),sep=""))
   names(data)[names(data) == "id"] <- "Seascapenr"
   print(species_info$file_name[k])
@@ -59,5 +62,5 @@ for (k in c(3:3)){
   data_agg10=subset(Mean_data,Seascapenr==10)
   
   data_meanyear=cbind(data_agg1$biomass_kg,data_agg2$biomass_kg,data_agg3$biomass_kg,data_agg4$biomass_kg,data_agg5$biomass_kg,data_agg6$biomass_kg,data_agg7$biomass_kg,data_agg8$biomass_kg,data_agg9$biomass_kg,data_agg10$biomass_kg)
-  write.csv(data_meanyear,paste(path,sprintf("Data/%s_PCMCI_prep.csv",species_info$file_name[k]),sep=""))
+  write.csv(data_meanyear,paste(path,sprintf("Data/PCMCI_prep/%s_PCMCI_prep.csv",species_info$file_name[k]),sep=""))
 }

@@ -203,7 +203,7 @@ ssc_map=readOGR("C:/Users/mrademaker/Documents/Research projects/STCNWS/Seascape
 ssc_map_wgs84 <- spTransform(ssc_map, CRS("+proj=longlat +datum=WGS84")) 
 
 #filter and adjust data_sets----
-for (i in 3:3){#1:nrow(species_info)){
+for (i in 1:nrow(species_info)){
   file_name=paste(path,"Data/",species_info$file_name[i],sep="")
   print(file_name)
   #Read in data
