@@ -1,0 +1,258 @@
+
+## Lag 2 Winsorized 95% shuffle 3000
+Amblyraja_radiata
+
+
+
+
+Out[7]:
+
+0.0
+
+
+
+Out[7]:
+
+10.826988072319
+
+
+
+
+False
+
+##
+## Running Tigramite PC algorithm
+##
+
+Parameters:
+independence test = par_corr
+tau_min = 1
+tau_max = 2
+pc_alpha = None
+max_conds_dim = None
+max_combinations = 1
+
+
+
+## Variable S1
+
+## Variable S2
+
+## Variable S3
+
+## Variable S4
+
+## Variable S5
+
+## Variable S6
+
+## Variable S7
+
+## Variable S8
+
+## Variable S9
+
+## Variable S10
+
+## Resulting condition sets:
+
+    Variable S1 has 7 parent(s):
+    [pc_alpha = 0.4]
+        (S4 -1): max_pval = 0.13667, min_val = 0.317
+        (S3 -2): max_pval = 0.10467, min_val = 0.288
+        (S5 -1): max_pval = 0.10200, min_val = 0.258
+        (S10 -1): max_pval = 0.16600, min_val = 0.255
+        (S8 -2): max_pval = 0.31733, min_val = 0.149
+        (S2 -2): max_pval = 0.26133, min_val = 0.089
+        (S1 -2): max_pval = 0.37800, min_val = 0.086
+
+    Variable S2 has 6 parent(s):
+    [pc_alpha = 0.5]
+        (S4 -1): max_pval = 0.01467, min_val = 0.597
+        (S1 -2): max_pval = 0.10733, min_val = 0.292
+        (S2 -1): max_pval = 0.04867, min_val = 0.247
+        (S7 -1): max_pval = 0.29267, min_val = 0.180
+        (S9 -2): max_pval = 0.47933, min_val = 0.093
+        (S4 -2): max_pval = 0.33733, min_val = 0.012
+
+    Variable S3 has 8 parent(s):
+    [pc_alpha = 0.4]
+        (S7 -1): max_pval = 0.01600, min_val = 0.356
+        (S3 -2): max_pval = 0.05067, min_val = 0.341
+        (S4 -1): max_pval = 0.05733, min_val = 0.327
+        (S5 -1): max_pval = 0.05533, min_val = 0.221
+        (S9 -1): max_pval = 0.24733, min_val = 0.220
+        (S4 -2): max_pval = 0.25400, min_val = 0.110
+        (S1 -2): max_pval = 0.39800, min_val = 0.104
+        (S2 -1): max_pval = 0.37533, min_val = 0.084
+
+    Variable S4 has 5 parent(s):
+    [pc_alpha = 0.5]
+        (S2 -2): max_pval = 0.29000, min_val = 0.360
+        (S4 -1): max_pval = 0.08533, min_val = 0.280
+        (S4 -2): max_pval = 0.05333, min_val = 0.189
+        (S9 -2): max_pval = 0.45400, min_val = 0.099
+        (S5 -1): max_pval = 0.35867, min_val = 0.098
+
+    Variable S5 has 8 parent(s):
+    [pc_alpha = 0.5]
+        (S4 -1): max_pval = 0.00400, min_val = 0.635
+        (S3 -2): max_pval = 0.01200, min_val = 0.388
+        (S10 -2): max_pval = 0.19467, min_val = 0.199
+        (S5 -2): max_pval = 0.25667, min_val = 0.175
+        (S5 -1): max_pval = 0.11067, min_val = 0.156
+        (S4 -2): max_pval = 0.32000, min_val = 0.092
+        (S2 -1): max_pval = 0.42200, min_val = 0.071
+        (S1 -1): max_pval = 0.47133, min_val = 0.060
+
+    Variable S6 has 3 parent(s):
+    [pc_alpha = 0.3]
+        (S9 -1): max_pval = 0.00733, min_val = 0.495
+        (S9 -2): max_pval = 0.08533, min_val = 0.341
+        (S2 -1): max_pval = 0.02067, min_val = 0.338
+
+    Variable S7 has 3 parent(s):
+    [pc_alpha = 0.05]
+        (S4 -1): max_pval = 0.01933, min_val = 0.408
+        (S7 -1): max_pval = 0.00400, min_val = 0.406
+        (S1 -2): max_pval = 0.02533, min_val = 0.393
+
+    Variable S8 has 2 parent(s):
+    [pc_alpha = 0.05]
+        (S9 -1): max_pval = 0.00133, min_val = 0.615
+        (S9 -2): max_pval = 0.00067, min_val = 0.481
+
+    Variable S9 has 5 parent(s):
+    [pc_alpha = 0.4]
+        (S9 -2): max_pval = 0.07667, min_val = 0.257
+        (S3 -2): max_pval = 0.31933, min_val = 0.195
+        (S10 -1): max_pval = 0.32000, min_val = 0.192
+        (S5 -1): max_pval = 0.31600, min_val = 0.140
+        (S10 -2): max_pval = 0.32333, min_val = 0.108
+
+    Variable S10 has 3 parent(s):
+    [pc_alpha = 0.3]
+        (S7 -2): max_pval = 0.16467, min_val = 0.313
+        (S10 -2): max_pval = 0.21467, min_val = 0.183
+        (S4 -1): max_pval = 0.21600, min_val = 0.146
+
+##
+## Running Tigramite MCI algorithm
+##
+
+Parameters:
+
+independence test = par_corr
+tau_min = 0
+tau_max = 2
+max_conds_py = None
+max_conds_px = None
+
+## Significant links at alpha = 0.05:
+
+    Variable S1 has 6 link(s):
+        (S4 -1): pval = 0.00867 | val = 0.448 | conf = (0.205, 0.710)
+        (S3 0): pval = 0.00200 | val = 0.440 | conf = (0.177, 0.669)
+        (S5 -2): pval = 0.01533 | val = 0.415 | conf = (-0.104, 0.832)
+        (S5 -1): pval = 0.04467 | val = 0.375 | conf = (-0.269, 0.657)
+        (S10 -1): pval = 0.04933 | val = 0.308 | conf = (0.053, 0.543)
+        (S9 -1): pval = 0.02733 | val = -0.298 | conf = (-0.499, 0.089)
+
+    Variable S2 has 7 link(s):
+        (S4 -1): pval = 0.00400 | val = 0.610 | conf = (0.409, 0.902)
+        (S2 -1): pval = 0.00000 | val = -0.423 | conf = (-0.859, -0.083)
+        (S7 -1): pval = 0.02867 | val = -0.407 | conf = (-0.674, -0.067)
+        (S3 -1): pval = 0.03400 | val = -0.352 | conf = (-0.665, 0.386)
+        (S4 -2): pval = 0.02000 | val = 0.343 | conf = (-0.251, 0.618)
+        (S4 0): pval = 0.01467 | val = 0.334 | conf = (-0.002, 0.761)
+        (S8 -2): pval = 0.04000 | val = -0.256 | conf = (-0.497, 0.028)
+
+    Variable S3 has 6 link(s):
+        (S4 -2): pval = 0.00067 | val = -0.582 | conf = (-0.808, -0.030)
+        (S1 0): pval = 0.00133 | val = 0.440 | conf = (0.093, 0.635)
+        (S7 -1): pval = 0.00733 | val = 0.432 | conf = (0.084, 0.751)
+        (S4 -1): pval = 0.02067 | val = 0.382 | conf = (0.062, 0.656)
+        (S5 -1): pval = 0.03067 | val = 0.348 | conf = (-0.380, 0.659)
+        (S3 -2): pval = 0.03867 | val = 0.326 | conf = (-0.189, 0.675)
+
+    Variable S4 has 5 link(s):
+        (S4 -2): pval = 0.01067 | val = 0.394 | conf = (-0.136, 0.694)
+        (S2 0): pval = 0.01200 | val = 0.334 | conf = (-0.034, 0.747)
+        (S2 -1): pval = 0.02933 | val = -0.296 | conf = (-0.536, 0.122)
+        (S5 -1): pval = 0.02200 | val = -0.279 | conf = (-0.531, 0.304)
+        (S1 -1): pval = 0.03800 | val = -0.276 | conf = (-0.540, 0.301)
+
+    Variable S5 has 10 link(s):
+        (S7 0): pval = 0.00000 | val = 0.622 | conf = (0.259, 0.799)
+        (S3 -2): pval = 0.00000 | val = 0.546 | conf = (-0.267, 0.764)
+        (S4 -1): pval = 0.00200 | val = 0.535 | conf = (0.270, 0.720)
+        (S5 -2): pval = 0.00333 | val = -0.427 | conf = (-0.791, 0.447)
+        (S5 -1): pval = 0.01600 | val = 0.399 | conf = (-0.059, 0.698)
+        (S8 0): pval = 0.03600 | val = 0.366 | conf = (-0.053, 0.610)
+        (S9 -1): pval = 0.00867 | val = 0.362 | conf = (0.087, 0.762)
+        (S10 -2): pval = 0.01867 | val = 0.358 | conf = (-0.301, 0.763)
+        (S1 -1): pval = 0.02067 | val = -0.352 | conf = (-0.608, -0.039)
+        (S6 -2): pval = 0.04267 | val = -0.288 | conf = (-0.728, 0.008)
+
+    Variable S6 has 4 link(s):
+        (S9 -1): pval = 0.00333 | val = 0.465 | conf = (0.191, 0.743)
+        (S9 -2): pval = 0.02200 | val = 0.449 | conf = (-0.022, 0.696)
+        (S10 -2): pval = 0.01400 | val = -0.408 | conf = (-0.597, -0.181)
+        (S4 -1): pval = 0.04667 | val = -0.274 | conf = (-0.561, 0.017)
+
+    Variable S7 has 3 link(s):
+        (S5 0): pval = 0.00000 | val = 0.622 | conf = (0.311, 0.820)
+        (S10 -2): pval = 0.00267 | val = 0.534 | conf = (0.123, 0.817)
+        (S7 -1): pval = 0.00400 | val = 0.362 | conf = (-0.036, 0.678)
+
+    Variable S8 has 5 link(s):
+        (S9 -1): pval = 0.00000 | val = 0.646 | conf = (0.132, 0.816)
+        (S9 -2): pval = 0.00467 | val = 0.451 | conf = (0.290, 0.647)
+        (S5 0): pval = 0.02933 | val = 0.366 | conf = (-0.124, 0.631)
+        (S5 -1): pval = 0.04733 | val = 0.345 | conf = (0.091, 0.595)
+        (S4 -2): pval = 0.01467 | val = -0.234 | conf = (-0.409, 0.005)
+
+    Variable S9 has 5 link(s):
+        (S5 -1): pval = 0.00267 | val = -0.423 | conf = (-0.720, 0.373)
+        (S2 -2): pval = 0.03067 | val = 0.377 | conf = (-0.170, 0.663)
+        (S4 -2): pval = 0.00733 | val = 0.372 | conf = (0.131, 0.591)
+        (S9 -2): pval = 0.02667 | val = 0.371 | conf = (-0.043, 0.607)
+        (S3 -1): pval = 0.02933 | val = -0.348 | conf = (-0.657, 0.166)
+
+    Variable S10 has 2 link(s):
+        (S7 -2): pval = 0.01067 | val = 0.455 | conf = (0.197, 0.742)
+        (S3 -2): pval = 0.04800 | val = -0.298 | conf = (-0.548, 0.312)
+
+## Significant links at alpha = 0.05:
+
+    Variable S1 has 1 link(s):
+        (S3 0): pval = 0.00200 | qval = 0.00200 | val = 0.440 | conf = (0.177, 0.669)
+
+    Variable S2 has 2 link(s):
+        (S2 -1): pval = 0.00000 | qval = 0.00000 | val = -0.423 | conf = (-0.859, -0.083)
+        (S4 0): pval = 0.01467 | qval = 0.01467 | val = 0.334 | conf = (-0.002, 0.761)
+
+    Variable S3 has 2 link(s):
+        (S4 -2): pval = 0.00067 | qval = 0.03333 | val = -0.582 | conf = (-0.808, -0.030)
+        (S1 0): pval = 0.00133 | qval = 0.00133 | val = 0.440 | conf = (0.093, 0.635)
+
+    Variable S4 has 1 link(s):
+        (S2 0): pval = 0.01200 | qval = 0.01200 | val = 0.334 | conf = (-0.034, 0.747)
+
+    Variable S5 has 3 link(s):
+        (S7 0): pval = 0.00000 | qval = 0.00000 | val = 0.622 | conf = (0.259, 0.799)
+        (S3 -2): pval = 0.00000 | qval = 0.00000 | val = 0.546 | conf = (-0.267, 0.764)
+        (S8 0): pval = 0.03600 | qval = 0.03600 | val = 0.366 | conf = (-0.053, 0.610)
+
+    Variable S6 has 0 link(s):
+
+    Variable S7 has 1 link(s):
+        (S5 0): pval = 0.00000 | qval = 0.00000 | val = 0.622 | conf = (0.311, 0.820)
+
+    Variable S8 has 2 link(s):
+        (S9 -1): pval = 0.00000 | qval = 0.00000 | val = 0.646 | conf = (0.132, 0.816)
+        (S5 0): pval = 0.02933 | qval = 0.02933 | val = 0.366 | conf = (-0.124, 0.631)
+
+    Variable S9 has 0 link(s):
+
+    Variable S10 has 0 link(s):
