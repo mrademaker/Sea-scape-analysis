@@ -203,7 +203,7 @@ species_info$file_name =gsub(" ","_",species_info$Scientific.name)
 ################################################################################
 for (j in c(1:16)){
   print(j)
-  data=read.csv(paste(path,sprintf("Data/Filtered_%s.csv",species_info$file_name[j]),sep=""))
+  data=read.csv(paste(path,sprintf("Data/IBTS_species/Filtered_%s.csv",species_info$file_name[j]),sep=""))
   names(data)[names(data) == "id"] <- "Seascapenr"
   print(species_info$file_name[j])
   # Unique combination between vessel, haulNo. and Year, i.e. each unique haul in dataset
@@ -222,7 +222,7 @@ for (j in c(1:16)){
   #   if (nf_p > 0){
   #     data_agg=subset(data_agg,Total_wgt < nf_p[[1]])
       #subset of data excluding outlier weights
-      }
+  #    }
   # # 
   
   # convert weights from grams to kg
@@ -425,3 +425,4 @@ for (j in c(1:16)){
   cplot=grid.arrange(s1plot,s2plot,s3plot,s4plot,s5plot,s6plot,s7plot,s8plot,s9plot,s10plot,ncol=4,nrow=3)
   ggsave(cplot,file=paste(path,sprintf("Seascapes/smooths/%s_GAM_wet_biomass.png",species_info$file_name[j]),sep=""),height=8, width=10,dpi = 600)#
 }
+
