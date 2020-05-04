@@ -1,9 +1,4 @@
 # Seascapes
 
-This repository contains the results of the spatial-temporal correlation analysis of fish population trends. An example of
-the temporal correlation between simulated trends for the common dab in two seascapes can be seen below. Next to this the folder
-contains the spatial data used to derive the seascapes.
-
- <br>
- 
-![](https://github.com/mrademaker/Sea-scape-analysis/blob/master/images/temp_cor.png)
+- The [Smooths](smooths) folder contains a smoother fitted to the average biomass in kg per haul per year for each species, on the basis of which we selected the species included in the PCMCI analysis. 
+- The results of the PCMCI analysis are provided in a separate .txt file per species.
