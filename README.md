@@ -1,6 +1,7 @@
 # Sea-scape-analysis
 
-This repository contains the data and code used to analyse the spatial-temporal patterns of fish populations in the North-and Dutch Wadden Sea area based on long-term systematic survey data (1977-2019).
+This repository contains the data and code used to analyse the spatial-temporal patterns of fish populations in the North
+Sea based on long-term systematic survey data (1977-2019).
 The repository consists of three sub-projects:
 
 - [Data](Data) - contains the raw and filtered catch per unit effort per length class (cpue_length_per_hour) extracted from the public ICES-DATRAS database.
