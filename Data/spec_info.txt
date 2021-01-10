@@ -1,0 +1,10 @@
+N	Species	Scientific name	LW-conversion	Lmin (cm)	Lmax (cm)	a	b
+1	Dab	Limanda limanda	0.0068*(L)^3.14	2	40	0.0068	3.14
+2	Whiting 	Merlangius merlangus	0.0063*(L)^3.06	2	91.5	0.0063	3.06
+3	Herring	Clupea harengus	0.0060*(L)^3.08	2	45	0.006	3.08
+4	Cod	Gadus morhua	0.0071*(L)^3.08	2	200	0.0071	3.08
+5	Sprat	Sprattus sprattus	0.0056*(L)^3.09	2	16	0.0056	3.09
+6	Common dragonet	Callionymus lyra	0.0214*(L)^2.59	2	30.5	0.0214	2.59
+7	Plaice	Pleuronectes platessa	0.0089*(L)^3.04	2	100	0.0089	3.04
+8	Grey gurnard	Eutrigla gurnardus	0.0079*(L)^3.02	2	60	0.0079	3.02
+9	Starry ray	Amblyraja radiata	0.0105*(L)^2.94	2	105	0.0105	2.94
