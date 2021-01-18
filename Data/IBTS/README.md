@@ -1,4 +1,4 @@
-- [IBTS](IBTS) - contains the raw catch per unit effort per length class (cpue_length_per_hour) extracted from the public ICES-DATRAS database.
+- [IBTS](IBTS) - contains the raw and filtered catch per unit effort per length class (cpue_length_per_hour) extracted from the public ICES-DATRAS database.
   (https://datras.ices.dk/Data_products/Download/Download_Data_public.aspx)
   
  - Each .csv file is of a single species.
