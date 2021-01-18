@@ -4,5 +4,5 @@
  - Each raw .csv file is of a single species.
  - Each row in the raw species .csv file contains the CPUE of a specific length class of that species in a specific haul.
  
- -[Filtered](Filtered) - contains the catch per unit effort data after filtering based on fishing gear, quarter of year and geographical extent (within seascapes).
+ -[Filtered](Filtered) - contains the catch per unit effort data after filtering based on fishing gear, quarter of year and geographical extent (which seascape).
  
